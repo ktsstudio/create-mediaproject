@@ -1,0 +1,65 @@
+@import '~styles/fonts/fonts';
+@import '~styles/mixins';
+
+* {
+  --font-common: "VK Sans Display", sans-serif;
+  --text_primary: #000;
+  --accent: #000;
+  --background_content: white;
+
+  margin: 0;
+  box-sizing: border-box;
+  user-select: none;
+  outline: none;
+  -webkit-font-smoothing: antialiased;
+
+  -webkit-overflow-scrolling: touch;
+
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+
+  -webkit-tap-highlight-color: transparent;
+  tap-highlight-color: transparent;
+  text-decoration: none;
+  border: none;
+  font-family: "VK Sans Display", sans-serif;
+}
+
+html,
+body {
+  -webkit-font-smoothing: antialiased;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  overscroll-behavior: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+#root {
+  width: 100%;
+  overscroll-behavior: none;
+  overflow: auto;
+  @include background;
+
+  z-index: 0;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: hidden;
+
+  min-height: 100vh;
+  top: 0;
+  left: 0;
+
+  color: $black;
+
+  transform: translate3d(0, 0, 0);
+}

@@ -1,0 +1,9 @@
+@import '~styles/mixins';
+
+.error {
+  position: absolute;
+  @include centerPos;
+  @include subtitle;
+  text-align: center;
+  color: $white;
+}

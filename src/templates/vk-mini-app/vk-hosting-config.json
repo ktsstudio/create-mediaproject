@@ -1,0 +1,9 @@
+{
+  "static_path": "public",
+  "endpoints": {
+    "mobile": "index.html",
+    "mvk": "index.html",
+    "web": ""
+  },
+  "noprompt": true
+}

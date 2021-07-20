@@ -1,0 +1,6 @@
+yarn-error.log
+.idea/
+node_modules/
+public/
+.DS_Store/
+bundle.zip

@@ -1,0 +1,21 @@
+@import '~styles/mixins';
+@import '~styles/colors.scss';
+
+.container {
+  width: 100%;
+  min-height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+
+  @include hideScrollbar;
+
+  &_fixed-height {
+    overflow: hidden;
+  }
+}

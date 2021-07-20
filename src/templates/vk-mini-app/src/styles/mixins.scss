@@ -1,0 +1,185 @@
+@import '~styles/colors';
+@import '~styles/consts';
+
+@mixin title {
+  font-weight: 700;
+  font-size: 4rem;
+  line-height: 4.8rem;
+  color: $pink;
+  font-family: VK Sans Display, sans-serif;
+}
+
+@mixin subtitle {
+  font-weight: 500;
+  font-size: 1.8rem;
+  line-height: 2.6rem;
+}
+
+@mixin text {
+  font-weight: 500;
+  font-size: 1.6rem;
+  line-height: 2rem;
+}
+
+@mixin smallText {
+  font-size: 1.1rem;
+  line-height: 1.5rem;
+}
+
+@mixin square($side) {
+  width: $side;
+  height: $side;
+}
+
+@mixin hideScrollbar {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@mixin softShadow {
+  box-shadow: 0px 1.99324px 1.59459px rgba(86, 0, 0, 0.0263634),
+    0px 4.5288px 3.62304px rgba(86, 0, 0, 0.0383252),
+    0px 7.88218px 6.30574px rgba(86, 0, 0, 0.0472016),
+    0px 12.5216px 10.0172px rgba(86, 0, 0, 0.055),
+    0px 19.3198px 15.4559px rgba(86, 0, 0, 0.0627984),
+    0px 30.1471px 24.1177px rgba(86, 0, 0, 0.0716748),
+    0px 50.0488px 40.0391px rgba(86, 0, 0, 0.0836366),
+    0px 100px 80px rgba(86, 0, 0, 0.11);
+}
+
+@mixin animate($property...) {
+  $animatedProperty: #{''};
+  @if length($property) > 1 {
+    @for $i from 1 through length($property)-1 {
+      $animatedProperty: $animatedProperty
+        nth($property, $i)
+        $transition-normal
+        #{', '};
+    }
+  }
+  transition: $animatedProperty nth($property, length($property))
+    $transition-normal;
+}
+
+@mixin centerPos {
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+}
+
+@mixin centerPosX {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+@keyframes zoomIn {
+  0% {
+    transform: scale(0.4);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@mixin zoomInAnimate {
+  animation-name: zoomIn;
+  animation-duration: 2.5s;
+  animation-timing-function: ease-out;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.7);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(0.7);
+  }
+}
+
+@mixin pulseAnimation($iteration-count: infinite) {
+  animation-name: pulse;
+  animation-duration: 2.5s;
+  animation-timing-function: ease-out;
+  animation-iteration-count: $iteration-count;
+  animation-fill-mode: forwards;
+}
+
+@keyframes rot {
+  0% {
+    transform: rotate(10deg);
+  }
+  50% {
+    transform: rotate(-30deg);
+  }
+  100% {
+    transform: rotate(10deg);
+  }
+}
+
+@mixin rotAnimate {
+  animation-name: rot;
+  animation-duration: 2s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@mixin height($max-height) {
+  @media (max-height: $max-height) {
+    @content;
+  }
+}
+
+@mixin minHeight($height) {
+  @media (min-height: $height) {
+    @content;
+  }
+}
+
+@mixin minWidth($value) {
+  @media (max-width: $value) {
+    @content;
+  }
+}
+
+@mixin ios() {
+  .ios & {
+    @content;
+  }
+}
+
+@mixin background {
+  background: $white;
+}
+
+@keyframes animation-fade {
+  0%,
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.2);
+  }
+
+  50% {
+    opacity: 0.6;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@mixin backgroundImagePosition {
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+}
+
+@mixin hover {
+  @include minWidth($phone-width) {
+    &:hover {
+      @content;
+    }
+  }
+}

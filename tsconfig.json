@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "noEmit": false,
+    "jsx": "react",
+    "moduleResolution": "node",
+    "outDir": "./dist",
+    "declaration": false,
+    "noImplicitAny": true,
+    "strict": true,
+    "target": "es5",
+    "experimentalDecorators": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "module": "CommonJS",
+    "typeRoots": ["./node_modules/@types", "../../node_modules/@types"]
+  },
+  "include": ["src/**/*"],
+  "exclude": ["src/templates/**/*", "node_modules", "dist", "src/templates"]
+}
