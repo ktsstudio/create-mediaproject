@@ -1,30 +1,16 @@
 @font-face {
   font-family: 'VK Sans Display';
-  src: url('fonts/VKSansDisplay/VKSansDisplay-Light.eot');
-  src: local('VK Sans Display Light'), local('VKSansDisplay-Light'),
-    url('fonts/VKSansDisplay/VKSansDisplay-Light.eot?#iefix')
-      format('embedded-opentype'),
-    url('fonts/VKSansDisplay/VKSansDisplay-Light.woff2') format('woff2'),
-    url('fonts/VKSansDisplay/VKSansDisplay-Light.woff') format('woff'),
-    url('fonts/VKSansDisplay/VKSansDisplay-Light.ttf') format('truetype'),
-    url('fonts/VKSansDisplay/VKSansDisplay-Light.svg#VKSansDisplay-Light')
-      format('svg');
-  font-weight: 300;
+  src: url('fonts/VKSansDisplay/VKSansDisplay-Bold.woff2') format('woff2'),
+    url('fonts/VKSansDisplay/VKSansDisplay-Bold.woff') format('woff');
+  font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
   font-family: 'VK Sans Display';
-  src: url('fonts/VKSansDisplay/VKSansDisplay-DemiBold.eot');
-  src: local('VK Sans Display DemiBold'), local('VKSansDisplay-DemiBold'),
-    url('fonts/VKSansDisplay/VKSansDisplay-DemiBold.eot?#iefix')
-      format('embedded-opentype'),
-    url('fonts/VKSansDisplay/VKSansDisplay-DemiBold.woff2') format('woff2'),
-    url('fonts/VKSansDisplay/VKSansDisplay-DemiBold.woff') format('woff'),
-    url('fonts/VKSansDisplay/VKSansDisplay-DemiBold.ttf') format('truetype'),
-    url('fonts/VKSansDisplay/VKSansDisplay-DemiBold.svg#VKSansDisplay-DemiBold')
-      format('svg');
+  src: url('fonts/VKSansDisplay/VKSansDisplay-DemiBold.woff2') format('woff2'),
+    url('fonts/VKSansDisplay/VKSansDisplay-DemiBold.woff') format('woff');
   font-weight: 600;
   font-style: normal;
   font-display: swap;
@@ -32,31 +18,8 @@
 
 @font-face {
   font-family: 'VK Sans Display';
-  src: url('fonts/VKSansDisplay/VKSansDisplay-Bold.eot');
-  src: local('VK Sans Display Bold'), local('VKSansDisplay-Bold'),
-    url('fonts/VKSansDisplay/VKSansDisplay-Bold.eot?#iefix')
-      format('embedded-opentype'),
-    url('fonts/VKSansDisplay/VKSansDisplay-Bold.woff2') format('woff2'),
-    url('fonts/VKSansDisplay/VKSansDisplay-Bold.woff') format('woff'),
-    url('fonts/VKSansDisplay/VKSansDisplay-Bold.ttf') format('truetype'),
-    url('fonts/VKSansDisplay/VKSansDisplay-Bold.svg#VKSansDisplay-Bold')
-      format('svg');
-  font-weight: bold;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'VK Sans Display';
-  src: url('fonts/VKSansDisplay/VKSansDisplay-Medium.eot');
-  src: local('VK Sans Display Medium'), local('VKSansDisplay-Medium'),
-    url('fonts/VKSansDisplay/VKSansDisplay-Medium.eot?#iefix')
-      format('embedded-opentype'),
-    url('fonts/VKSansDisplay/VKSansDisplay-Medium.woff2') format('woff2'),
-    url('fonts/VKSansDisplay/VKSansDisplay-Medium.woff') format('woff'),
-    url('fonts/VKSansDisplay/VKSansDisplay-Medium.ttf') format('truetype'),
-    url('fonts/VKSansDisplay/VKSansDisplay-Medium.svg#VKSansDisplay-Medium')
-      format('svg');
+  src: url('fonts/VKSansDisplay/VKSansDisplay-Medium.woff2') format('woff2'),
+    url('fonts/VKSansDisplay/VKSansDisplay-Medium.woff') format('woff');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -64,16 +27,18 @@
 
 @font-face {
   font-family: 'VK Sans Display';
-  src: url('fonts/VKSansDisplay/VKSansDisplay-Regular.eot');
-  src: local('VK Sans Display Regular'), local('VKSansDisplay-Regular'),
-    url('fonts/VKSansDisplay/VKSansDisplay-Regular.eot?#iefix')
-      format('embedded-opentype'),
-    url('fonts/VKSansDisplay/VKSansDisplay-Regular.woff2') format('woff2'),
-    url('fonts/VKSansDisplay/VKSansDisplay-Regular.woff') format('woff'),
-    url('fonts/VKSansDisplay/VKSansDisplay-Regular.ttf') format('truetype'),
-    url('fonts/VKSansDisplay/VKSansDisplay-Regular.svg#VKSansDisplay-Regular')
-      format('svg');
-  font-weight: normal;
+  src: url('fonts/VKSansDisplay/VKSansDisplay-Regular.woff2') format('woff2'),
+    url('fonts/VKSansDisplay/VKSansDisplay-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'VK Sans Display';
+  src: url('fonts/VKSansDisplay/VKSansDisplay-Light.woff2') format('woff2'),
+    url('fonts/VKSansDisplay/VKSansDisplay-Light.woff') format('woff');
+  font-weight: 300;
   font-style: normal;
   font-display: swap;
 }

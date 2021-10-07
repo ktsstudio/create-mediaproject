@@ -6,19 +6,29 @@
   "license": "MIT",
   "scripts": {
     "rm-source-maps": "rimraf public/**/*.js.map",
-    "start": "NODE_ENV=development API_URL=/api/ webpack serve --mode development",
+    "dev": "NODE_ENV=development API_URL=/api/ webpack serve --mode development",
     "build": "NODE_ENV=production webpack --mode production && yarn run rm-source-maps",
+    "build-zip": "NODE_ENV=production IS_ZIP=true webpack --mode production",
     "ts-check": "tsc --skipLibCheck --noEmit --project tsconfig.json",
-    "codestyle-fix": "prettier --write \"src/**/*.{ts,js}?(x)\"",
-    "lint-fix": "NODE_ENV=development eslint --fix src; exit 0",
+    "lint-fix": "eslint src --fix",
+    "codestyle-fix": "prettier --write **/*.{ts,tsx,json,scss,css}",
     "deploy-vk": "CI_URLS=true vk-miniapps-deploy",
-    "precommit": "lint-staged",
-    "prepare": "npx husky install && npx husky add .husky/pre-commit \"yarn precommit\""
+    "precommit": "lint-staged"
   },
   "homepage": "./",
-  "commands": ["yarn build"],
+  "commands": [
+    "yarn build"
+  ],
   "lint-staged": {
-    "*.{ts,js}?(x)": ["eslint --fix", "prettier --write"]
+    "*.{ts,js}?(x)": [
+      "yarn run lint-fix",
+      "yarn run codestyle-fix"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn run ts-check && yarn run lint-fix && yarn run codestyle-fix"
+    }
   },
   "dependencies": {
     "@babel/runtime": "^7.14.6",
@@ -64,6 +74,7 @@
     "autoprefixer": "^10.2.6",
     "babel-loader": "^8.2.2",
     "clean-webpack-plugin": "^3.0.0",
+    "copy-webpack-plugin": "^9.0.1",
     "css-loader": "^5.2.6",
     "delete-source-maps-webpack-plugin": "^1.0.2",
     "delete-sourcemap-webpack-plugin": "^1.0.1",

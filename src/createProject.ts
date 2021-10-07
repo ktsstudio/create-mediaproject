@@ -7,25 +7,30 @@ import chalk from 'chalk';
 import { OptionsType } from './parseOptions';
 
 const SKIP_FILES: string[] = [];
+const ENCODING = 'utf-8';
+const TEMPLATE_REGEXP = /\.template/;
 
 export const saveFile = (
   fileName: string,
-  fileTemplatePath: string,
-  fileSavePath: string,
+  templateFilePath: string,
+  projectFilePath: string,
   options: OptionsType
 ): void => {
-  const contents = fs.readFileSync(fileTemplatePath, 'utf8');
+  const readFileBuffer = () => fs.readFileSync(templateFilePath);
 
-  const isTemplate = fileName.indexOf('.template') !== -1;
+  const readTemplate = () => fs.readFileSync(templateFilePath, ENCODING);
+  const renderTemplate = () => ejs.render(readTemplate(), options);
 
-  const saveFileName = isTemplate
-    ? fileName.replace('.template', '')
+  const isTemplate = fileName.match(TEMPLATE_REGEXP);
+
+  const writeFileName = isTemplate
+    ? fileName.replace(TEMPLATE_REGEXP, '')
     : fileName;
 
-  const saveContents = isTemplate ? ejs.render(contents, options) : contents;
+  const writeData = isTemplate ? renderTemplate() : readFileBuffer();
+  const writePath = path.join(projectFilePath, writeFileName);
 
-  const writePath = path.join(fileSavePath, saveFileName);
-  fs.writeFileSync(writePath, saveContents, 'utf8');
+  fs.writeFileSync(writePath, writeData);
 };
 
 export const createDirectoryContents = (

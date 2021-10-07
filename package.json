@@ -1,13 +1,13 @@
 {
   "name": "@ktsstudio/create-mediaproject",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "author": "KTS Studio",
   "license": "MIT",
   "description": "Package-template for kts special project frontend",
   "scripts": {
     "lint": "eslint src --fix",
     "codestyle": "prettier src --write \"*.{ts,js}?(x)\"",
-    "run": "ts-node ./src/index.ts",
+    "start": "ts-node ./src/index.ts",
     "clear": "rm -rf ./dist",
     "copy-templates": "cp -r ./src/templates ./dist/templates",
     "build": "yarn clear && tsc && yarn copy-templates",
@@ -33,6 +33,7 @@
     "@types/shelljs": "^0.8.8",
     "@types/yargs": "^16.0.0",
     "eslint": "7.17.0",
-    "ts-node": "^9.1.1"
+    "ts-node": "^9.1.1",
+    "typescript": "^4.4.3"
   }
 }

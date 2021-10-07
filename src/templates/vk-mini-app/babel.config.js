@@ -1,5 +1,7 @@
+const { generateScopedNameFactory } = require('@dr.pogodin/babel-plugin-react-css-modules/utils');
+
 module.exports = (api) => {
-  const env = api.cache(() => process.env.NODE_ENV);
+  api.cache(() => process.env.NODE_ENV);
 
   const isProd = process.env.NODE_ENV === 'production';
 
@@ -20,21 +22,19 @@ module.exports = (api) => {
       require('@babel/plugin-proposal-export-default-from'),
       require('@babel/plugin-proposal-class-properties'),
       require('@babel/plugin-transform-async-to-generator'),
-      [
-        '@dr.pogodin/react-css-modules',
-        {
-          filetypes: {
-            '.scss': {
-              syntax: 'postcss-scss',
-              plugins: ['postcss-nested'],
-            },
+      ["@dr.pogodin/react-css-modules", {
+        filetypes: {
+          '.scss': {
+            syntax: 'postcss-scss',
+            plugins: ['postcss-nested'],
           },
-          generateScopedName: '[name]__[local]__[contenthash:base64:5]',
-          webpackHotModuleReloading: true,
-          autoResolveMultipleImports: true,
-          handleMissingStyleName: 'warn',
         },
-      ],
+        generateScopedName:
+          generateScopedNameFactory("[path]___[name]__[local]___[hash:base64:6]"),
+        webpackHotModuleReloading: true,
+        autoResolveMultipleImports: true,
+        handleMissingStyleName: 'warn',
+      }],
       !isProd && require.resolve('react-refresh/babel'),
     ].filter(Boolean),
   };
