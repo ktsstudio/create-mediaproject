@@ -23,7 +23,6 @@ In command line: `create-mediaproject`
 
 It will ask several questions:
 ```
-? Directory for project test
 ? Select project type vk-mini-app
 ? Project name my-project
 ```
