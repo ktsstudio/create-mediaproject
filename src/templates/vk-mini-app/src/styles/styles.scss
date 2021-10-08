@@ -2,7 +2,7 @@
 @import '~styles/mixins';
 
 * {
-  --font-common: "VK Sans Display", sans-serif;
+  --font-common: 'VK Sans Display', sans-serif;
   --text_primary: #000;
   --accent: #000;
   --background_content: white;
@@ -22,7 +22,7 @@
   tap-highlight-color: transparent;
   text-decoration: none;
   border: none;
-  font-family: "VK Sans Display", sans-serif;
+  font-family: 'VK Sans Display', sans-serif;
 }
 
 html,

@@ -1,12 +1,13 @@
+import { loadImages } from '@ktsstudio/mediaproject-utils';
 import { observer } from 'mobx-react';
 import * as React from 'react';
 import { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
+
 import Container from 'components/special/Container';
 import { routes, buildUrl } from 'config/routes';
 import { allStatics } from 'img/config';
 import { useUserStore } from 'store/hooks';
-import loadImages from 'utils/loadImages';
 
 interface Props {
   onReady: () => void;

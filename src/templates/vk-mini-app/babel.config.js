@@ -3,19 +3,17 @@ const { generateScopedNameFactory } = require('@dr.pogodin/babel-plugin-react-cs
 module.exports = (api) => {
   api.cache(() => process.env.NODE_ENV);
 
-  const isProd = process.env.NODE_ENV === 'production';
-
   return {
     presets: [
       [
         require('@babel/preset-env'),
-        {
+        { 
           useBuiltIns: 'entry',
           corejs: 3,
-        },
+          targets: { browsers: "last 2 versions" } } 
       ],
-      require('@babel/preset-react'),
       require('@babel/preset-typescript'),
+      require('@babel/preset-react'),
     ],
     plugins: [
       [require('@babel/plugin-proposal-decorators'), { legacy: true }],
@@ -35,7 +33,6 @@ module.exports = (api) => {
         autoResolveMultipleImports: true,
         handleMissingStyleName: 'warn',
       }],
-      !isProd && require.resolve('react-refresh/babel'),
     ].filter(Boolean),
   };
 };

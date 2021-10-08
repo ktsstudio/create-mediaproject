@@ -11,10 +11,7 @@ import '@vkontakte/vkui/dist/vkui.css';
 
 const App: React.FC = () => {
   const [appReady, setAppReady] = React.useState(false);
-
-  const handleAppReady = () => {
-    setAppReady(true);
-  };
+  const handleAppReady = () => setAppReady(true);
 
   return (
     <Router>

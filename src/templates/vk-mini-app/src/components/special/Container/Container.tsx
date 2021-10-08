@@ -10,7 +10,9 @@ interface Props {
 
 const Container: React.FC<Props> = ({ children, fixedHeight }: Props) => {
   return (
-    <div className={cn(styles.container, fixedHeight && 'container_fixed-height')}>
+    <div
+      className={cn(styles.container, fixedHeight && 'container_fixed-height')}
+    >
       {children}
     </div>
   );

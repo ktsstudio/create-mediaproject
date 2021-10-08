@@ -9,5 +9,7 @@
 -- Source maps fixed
 -- Build ZIP added
 -- Gitlab-CI new-front ref added
+-- @ktsstudio/mediaproject-utils and @ktsstudio/mediaproject-vk added
+-- Refresh Webpack fixed
 ### v1.0.2
 * Updated readme for vk-mini-app template
