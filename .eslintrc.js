@@ -10,7 +10,6 @@ module.exports = {
   extends: [
     'eslint:recommended',
     'prettier',
-    'prettier/react',
     'plugin:import/errors',
     'plugin:import/warnings',
     'plugin:import/typescript',
@@ -86,4 +85,3 @@ module.exports = {
     'import/external-module-folders': ['node_modules', 'node_modules/@types'],
   },
 };
-
