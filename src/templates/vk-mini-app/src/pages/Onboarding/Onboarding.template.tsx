@@ -1,9 +1,15 @@
+import { observer } from 'mobx-react';
 import * as React from 'react';
+
+import { PanelEnum } from 'config/routes';
+import { useVKRouter } from 'utils/useVKViews';
 
 import styles from './Onboarding.modules.scss';
 import ReactIcon from './react-icon.component.svg';
 
 const Onboarding = () => {
+  const pushPanel = useVKRouter();
+
   return (
     <div className={styles.container}>
       <h1><%= projectName %></h1>
@@ -14,8 +20,9 @@ const Onboarding = () => {
         </div>
         <div className={styles.webpack_icon} />
       </div>
+      <div onClick={() => pushPanel(PanelEnum.main)}>Go to Main</div>
     </div>
   );
 };
 
-export default React.memo(Onboarding);
+export default observer(Onboarding);

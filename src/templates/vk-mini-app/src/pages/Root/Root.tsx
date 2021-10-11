@@ -1,54 +1,61 @@
-import bridge from '@vkontakte/vk-bridge';
-import { Root as VKRoot, View } from '@vkontakte/vkui';
+import { View, Root as VKRoot } from '@vkontakte/vkui';
 import { observer } from 'mobx-react';
 import * as React from 'react';
-import { useHistory } from 'react-router-dom';
 
-import VKRoute from 'components/special/VKRoute';
-import { routes } from 'config/routes';
-import { useView } from 'utils/hooks';
+import VKPanel from 'components/special/VKPanel';
+import Splash from 'pages/Splash';
+import { VKRouteType, VKViewsType } from 'types/routes';
+import {
+  buidPanelId,
+  buidViewId,
+  useView,
+  useVKRouter,
+  onSwipeBack,
+} from 'utils/useVKViews';
 
 import '../../styles/styles.scss';
-import Onboarding from '../Onboarding';
 
-const usePanel = (p: string) => {
-  return p || routes.onboarding.index;
-};
+const Root: React.FC<VKViewsType> = ({ views, defaultRoute }: VKViewsType) => {
+  const [appReady, setAppReady] = React.useState(false);
+  const [activeView, activePanel] = useView();
+  const pushPanel = useVKRouter();
 
-const Root: React.FC = () => {
-  const [view, p] = useView();
-  const history = useHistory();
-
-  const panel = usePanel(p);
-
-  const goBack = () => {
-    const isStart = history.location.state === 'start';
-    if (isStart) {
-      if (bridge.supports('VKWebAppDisableSwipeBack')) {
-        bridge.send('VKWebAppDisableSwipeBack');
-      }
-    } else {
-      if (bridge.supports('VKWebAppEnableSwipeBack')) {
-        bridge.send('VKWebAppEnableSwipeBack');
-        history.goBack();
-      }
-    }
+  const handleAppReady = async () => {
+    pushPanel(defaultRoute.panel, true);
+    setAppReady(true);
   };
 
+  if (!appReady) {
+    return <Splash onReady={handleAppReady} />;
+  }
+
   return (
-    <>
-      <VKRoot activeView={view || routes.onboarding.view}>
-        <View
-          id={routes.onboarding.view}
-          activePanel={
-            view === routes.onboarding.view ? panel : routes.onboarding.index
-          }
-          onSwipeBack={goBack}
-        >
-          <VKRoute id={routes.onboarding.index} Component={Onboarding} />
-        </View>
-      </VKRoot>
-    </>
+    <VKRoot activeView={buidViewId(activeView)}>
+      {Object.keys(views).map((viewKey) => {
+        const viewRoutes: VKRouteType[] = views[viewKey];
+        const defaultViewPanel = viewRoutes[0].panel;
+        return (
+          <View
+            id={buidViewId(viewKey)}
+            key={buidViewId(viewKey)}
+            activePanel={buidPanelId(
+              activeView === viewKey ? activePanel : defaultViewPanel
+            )}
+            onSwipeBack={onSwipeBack}
+          >
+            {viewRoutes.map((route) => {
+              const panelId = buidPanelId(route.panel);
+              const { Component } = route;
+              return (
+                <VKPanel key={panelId} id={panelId}>
+                  <Component />
+                </VKPanel>
+              );
+            })}
+          </View>
+        );
+      })}
+    </VKRoot>
   );
 };
 

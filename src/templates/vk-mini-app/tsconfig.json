@@ -8,7 +8,6 @@
       "pages": ["pages/*"],
       "store": ["store/*"],
       "styles": ["styles/*"],
-      "types": ["types/*"],
       "utils": ["utils/*"]
     },
     "typeRoots": ["./node_modules/@types", "types"],
@@ -28,6 +27,6 @@
     "target": "es6",
     "jsx": "react"
   },
-  "include": ["./src"],
+  "include": ["src/**/*"],
   "exclude": ["node_modules"]
 }

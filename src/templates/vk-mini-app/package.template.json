@@ -37,7 +37,7 @@
     "@vkontakte/icons": "^1.110.0",
     "@vkontakte/vk-bridge": "^2.4.2",
     "@vkontakte/vkjs": "^0.22.1",
-    "@vkontakte/vkui": "^4.10.0",
+    "@vkontakte/vkui": "^4.17.0",
     "axios": "^0.22.0",
     "classnames": "^2.2.6",
     "mobx": "^6.3.2",

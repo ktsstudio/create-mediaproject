@@ -4,6 +4,7 @@ import { initializeVkApp } from '@ktsstudio/mediaproject-vk';
 import bridge from '@vkontakte/vk-bridge';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+import '@vkontakte/vkui/dist/vkui.css';
 
 import App from './App';
 
@@ -32,9 +33,13 @@ const startApp = () => {
     // @ts-ignore
     bridge.send('VKWebAppSetSwipeSettings', {});
   }
+
   // fix for :active
   document.addEventListener('touchstart', () => {}, false);
-  ReactDOM.render(<App />, document.querySelector('#root'));
+
+  window.onload = () => {
+    ReactDOM.render(<App />, document.querySelector('#root'));
+  };
 };
 
-window.onload = () => startApp();
+startApp();
