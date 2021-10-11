@@ -10,4 +10,4 @@ variables:
   DEV_API_DOMAIN: <%= projectName %>.kube1.ktsdev2.ru
   API_PROD_URL: https://<%= projectName %>.ru-prod2.kts.studio/api/
   API_URL: /api/
-  VK_PROD_APP_ID: 7971242
+  VK_PROD_APP_ID: 1234567
