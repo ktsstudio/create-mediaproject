@@ -21,6 +21,7 @@ export const routes: VKRoutesRecord = {
     panel: PanelEnum.onboarding,
     view: ViewEnum.onboarding,
     Component: require('pages/Onboarding').default,
+    fixedHeight: true,
   },
   [PanelEnum.main]: {
     panel: PanelEnum.main,

@@ -7,6 +7,7 @@ export type VKRouteType = {
   panel: PanelEnum;
   view: ViewEnum;
   Component: React.FC;
+  fixedHeight?: boolean;
 };
 
 export type VKRoutesRecord = Record<PanelEnum, VKRouteType>;

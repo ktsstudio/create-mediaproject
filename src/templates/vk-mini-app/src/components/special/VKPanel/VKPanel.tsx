@@ -8,12 +8,17 @@ import Container from 'components/special/Container';
 type VKPanelProps = {
   id: string;
   children: React.ReactElement;
+  fixedHeight?: boolean;
 };
 
-const VKPanel: React.FC<VKPanelProps> = ({ children, id }: VKPanelProps) => {
+const VKPanel: React.FC<VKPanelProps> = ({
+  children,
+  id,
+  fixedHeight = false,
+}: VKPanelProps) => {
   return (
     <Panel id={id}>
-      <Container fixedHeight>
+      <Container fixedHeight={fixedHeight}>
         <Header />
         {children}
       </Container>

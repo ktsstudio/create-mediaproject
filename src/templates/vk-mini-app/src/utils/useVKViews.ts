@@ -53,18 +53,19 @@ export const useVKViews: UseVKViewsType = (config) => {
   return { views, defaultRoute };
 };
 
-export const onSwipeBack = (): void => {
-  const history = useHistory();
+// NOT WORKING https://github.com/VKCOM/VKUI/issues/903
+// export const onSwipeBack = (): void => {
+//   const history = useHistory();
 
-  if (history.location.state === 'start') {
-    if (bridge.supports('VKWebAppDisableSwipeBack')) {
-      bridge.send('VKWebAppDisableSwipeBack');
-    }
-    return;
-  }
+//   if (history.location.state === 'start') {
+//     if (bridge.supports('VKWebAppDisableSwipeBack')) {
+//       bridge.send('VKWebAppDisableSwipeBack');
+//     }
+//     return;
+//   }
 
-  if (bridge.supports('VKWebAppEnableSwipeBack')) {
-    bridge.send('VKWebAppEnableSwipeBack');
-    history.goBack();
-  }
-};
+//   if (bridge.supports('VKWebAppEnableSwipeBack')) {
+//     bridge.send('VKWebAppEnableSwipeBack');
+//     history.goBack();
+//   }
+// };

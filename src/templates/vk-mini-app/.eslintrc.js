@@ -1,6 +1,7 @@
 const path = require('path');
 
 module.exports = {
+  root: true,
   parser: '@typescript-eslint/parser',
   env: {
     browser: true,
@@ -27,7 +28,6 @@ module.exports = {
     },
     ecmaVersion: 2018,
     sourceType: 'module',
-    project: path.resolve('./tsconfig.json'),
   },
   plugins: ['@typescript-eslint', 'import', 'prettier', 'react', 'react-hooks'],
   rules: {
@@ -69,7 +69,7 @@ module.exports = {
     semi: 'error',
     '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/interface-name-prefix': 'off',
-    '@typescript-eslint/no-unused-vars': 'warn', // error
+    '@typescript-eslint/no-unused-vars': 'warn',
     '@typescript-eslint/camelcase': 'off',
     '@typescript-eslint/no-var-requires': 'off',
     '@typescript-eslint/ban-ts-comment': 'warn',
@@ -77,14 +77,7 @@ module.exports = {
   },
   settings: {
     'import/parsers': {
-      '@typescript-eslint/parser': [
-        '.ts',
-        '.tsx',
-        '.scss',
-        '.svg',
-        '.png',
-        '.jpg',
-      ],
+      '@typescript-eslint/parser': ['.ts', '.tsx', '.scss', '.svg'],
     },
     'import/resolver': {
       typescript: {
@@ -93,7 +86,7 @@ module.exports = {
     },
     'import/external-module-folders': ['node_modules', 'node_modules/@types'],
     react: {
-      version: 'detected'
-    }
+      version: 'detected',
+    },
   },
 };

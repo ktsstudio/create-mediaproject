@@ -13,6 +13,8 @@ interface Window {
   IS_MOBILE: boolean;
   PLATFORM: string;
   LOCATION_HASH: string;
+  is_odr: boolean;
+  is_ios: boolean;
   app_id: number;
   scope: string | null;
   user_id: number | null;
@@ -21,3 +23,9 @@ interface Window {
   search: string;
   page: string | null;
 }
+
+declare module 'eruda';
+
+declare module 'eruda-dom';
+
+declare module 'eruda-code';

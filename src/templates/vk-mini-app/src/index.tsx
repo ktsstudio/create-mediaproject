@@ -1,5 +1,5 @@
 import 'regenerator-runtime/runtime';
-import { markup } from '@ktsstudio/mediaproject-utils';
+import { markup, noop } from '@ktsstudio/mediaproject-utils';
 import { initializeVkApp } from '@ktsstudio/mediaproject-vk';
 import bridge from '@vkontakte/vk-bridge';
 import * as React from 'react';
@@ -11,7 +11,7 @@ import App from './App';
 const startApp = () => {
   initializeVkApp();
   markup().init();
-  if (bridge.supports('VKWebAppSetViewSettings')) {
+  if (bridge.supports('VKWebAppSetViewSettings') && window.is_ios) {
     bridge.send('VKWebAppSetViewSettings', {
       status_bar_style: 'light',
       action_bar_color: '#DC2129',
@@ -19,16 +19,15 @@ const startApp = () => {
     });
   }
   if (bridge.supports('VKWebAppSetSwipeSettings')) {
-    // @ts-ignore
-    bridge.send('VKWebAppSetSwipeSettings', {});
+    bridge.send('VKWebAppSetSwipeSettings', { history: true });
   }
 
   // fix for :active
-  document.addEventListener('touchstart', () => {}, false);
+  document.addEventListener('touchstart', noop, false);
 
-  window.onload = () => {
-    ReactDOM.render(<App />, document.querySelector('#root'));
-  };
+  ReactDOM.render(<App />, document.querySelector('#root'));
 };
 
-startApp();
+window.onload = () => {
+  setTimeout(startApp, 500);
+};

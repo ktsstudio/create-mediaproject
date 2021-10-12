@@ -1,4 +1,5 @@
 import { loadImages } from '@ktsstudio/mediaproject-utils';
+import { observer } from 'mobx-react';
 import * as React from 'react';
 
 import Container from 'components/special/Container';
@@ -18,7 +19,7 @@ const Splash: React.FC<Props> = ({ onReady }: Props) => {
       .then(() =>
         loadImages(allStatics, () => setProgress((p: number) => p + 1))
       )
-      .then(() => setTimeout(onReady, 1000));
+      .then(onReady);
   }, []);
 
   return (
@@ -28,4 +29,4 @@ const Splash: React.FC<Props> = ({ onReady }: Props) => {
   );
 };
 
-export default React.memo(Splash);
+export default observer(Splash);

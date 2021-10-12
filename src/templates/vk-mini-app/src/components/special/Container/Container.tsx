@@ -8,18 +8,20 @@ interface Props {
   fixedHeight?: boolean;
 }
 
-const Container: React.FC<Props> = ({ children, fixedHeight }: Props) => {
+const Container: React.FC<Props> = ({
+  children,
+  fixedHeight = false,
+}: Props) => {
   return (
     <div
-      className={cn(styles.container, fixedHeight && 'container_fixed-height')}
+      className={cn(
+        styles.container,
+        fixedHeight && styles['container_fixed-height']
+      )}
     >
       {children}
     </div>
   );
-};
-
-Container.defaultProps = {
-  fixedHeight: false,
 };
 
 export default React.memo(Container);

@@ -4,7 +4,7 @@ import * as React from 'react';
 import { PanelEnum } from 'config/routes';
 import { useVKRouter } from 'utils/useVKViews';
 
-const Main = () => {
+const Main: React.FC = () => {
   const pushPanel = useVKRouter();
 
   return (

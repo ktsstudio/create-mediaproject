@@ -10,7 +10,7 @@ import {
   buidViewId,
   useView,
   useVKRouter,
-  onSwipeBack,
+  // onSwipeBack,
 } from 'utils/useVKViews';
 
 import '../../styles/styles.scss';
@@ -33,21 +33,24 @@ const Root: React.FC<VKViewsType> = ({ views, defaultRoute }: VKViewsType) => {
     <VKRoot activeView={buidViewId(activeView)}>
       {Object.keys(views).map((viewKey) => {
         const viewRoutes: VKRouteType[] = views[viewKey];
-        const defaultViewPanel = viewRoutes[0].panel;
         return (
           <View
             id={buidViewId(viewKey)}
             key={buidViewId(viewKey)}
             activePanel={buidPanelId(
-              activeView === viewKey ? activePanel : defaultViewPanel
+              activeView === viewKey ? activePanel : viewRoutes[0].panel
             )}
-            onSwipeBack={onSwipeBack}
+            // onSwipeBack={onSwipeBack}
           >
             {viewRoutes.map((route) => {
               const panelId = buidPanelId(route.panel);
               const { Component } = route;
               return (
-                <VKPanel key={panelId} id={panelId}>
+                <VKPanel
+                  key={panelId}
+                  id={panelId}
+                  fixedHeight={route.fixedHeight}
+                >
                   <Component />
                 </VKPanel>
               );

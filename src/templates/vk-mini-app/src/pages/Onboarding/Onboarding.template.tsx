@@ -7,7 +7,7 @@ import { useVKRouter } from 'utils/useVKViews';
 import styles from './Onboarding.modules.scss';
 import ReactIcon from './react-icon.component.svg';
 
-const Onboarding = () => {
+const Onboarding: React.FC = () => {
   const pushPanel = useVKRouter();
 
   return (
