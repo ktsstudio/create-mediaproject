@@ -1,81 +1,55 @@
 import * as fs from 'fs';
 import * as path from 'path';
 
-import * as ejs from 'ejs';
-import chalk from 'chalk';
-
-import { OptionsType } from './parseOptions';
-
-const SKIP_FILES: string[] = [];
-const ENCODING = 'utf-8';
-const TEMPLATE_REGEXP = /\.template/;
-
-export const saveFile = (
-  fileName: string,
-  templateFilePath: string,
-  projectFilePath: string,
-  options: OptionsType
-): void => {
-  const readFileBuffer = () => fs.readFileSync(templateFilePath);
-
-  const readTemplate = () => fs.readFileSync(templateFilePath, ENCODING);
-  const renderTemplate = () => ejs.render(readTemplate(), options);
-
-  const isTemplate = fileName.match(TEMPLATE_REGEXP);
-
-  const writeFileName = isTemplate
-    ? fileName.replace(TEMPLATE_REGEXP, '')
-    : fileName;
-
-  const writeData = isTemplate ? renderTemplate() : readFileBuffer();
-  const writePath = path.join(projectFilePath, writeFileName);
-
-  fs.writeFileSync(writePath, writeData);
-};
+import { OptionsType } from './types';
+import { printError } from './utils/print';
+import { MESSAGES, SKIP_FILENAMES } from './config';
+import { saveDirectory, saveFile } from './fs';
 
 export const createDirectoryContents = (
-  currentRelativePath: string,
-  options: OptionsType
+  options: OptionsType,
+  relativePath = '',
+  skipFileNames = SKIP_FILENAMES
 ): void => {
-  const currentFullTemplatePath = path.join(
-    options.templatePath,
-    currentRelativePath
-  );
-  const currentFullTargetPath = path.join(
-    options.fullProjectPath,
-    currentRelativePath
-  );
-  const filesToCreate = fs.readdirSync(currentFullTemplatePath);
+  const buildRelativePath = (parentPath: string) =>
+    path.join(parentPath, relativePath);
 
-  filesToCreate.forEach((file) => {
-    const filePath = path.join(currentFullTemplatePath, file);
+  const projectBuildPath = buildRelativePath(options.buildDir);
+  const fullTemplatePath = buildRelativePath(options.templatePath);
+  const entriesToCreate = fs.readdirSync(fullTemplatePath);
 
-    const stats = fs.statSync(filePath);
-
-    if (SKIP_FILES.indexOf(file) > -1) {
+  entriesToCreate.forEach((entryName) => {
+    if (skipFileNames.includes(entryName)) {
       return;
     }
 
+    const entryPath = path.join(fullTemplatePath, entryName);
+    const stats = fs.statSync(entryPath);
+    const isDirectory = stats.isDirectory();
+
+    const saveProps = {
+      entryPath: isDirectory ? relativePath : entryPath,
+      options,
+      entryName,
+      projectBuildPath,
+    };
+
+    if (isDirectory) {
+      return saveDirectory(saveProps);
+    }
+
     if (stats.isFile()) {
-      saveFile(file, filePath, currentFullTargetPath, options);
-    } else if (stats.isDirectory()) {
-      fs.mkdirSync(path.join(currentFullTargetPath, file));
-      createDirectoryContents(path.join(currentRelativePath, file), options);
+      return saveFile(saveProps);
     }
   });
 };
 
 export const createProject = (options: OptionsType): void => {
-  if (fs.existsSync(options.fullProjectPath)) {
-    console.log(
-      chalk.red(
-        'Project with this name already created, please delete folder or rename project'
-      )
-    );
-    throw new Error('Project exists');
+  if (fs.existsSync(options.buildDir)) {
+    printError(MESSAGES.buildDirExists);
+    throw new Error(MESSAGES.buildDirExists);
   }
 
-  fs.mkdirSync(options.fullProjectPath);
-
-  createDirectoryContents('', options);
+  fs.mkdirSync(options.buildDir);
+  createDirectoryContents(options);
 };

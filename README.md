@@ -1,5 +1,4 @@
 # create-mediaproject
-
 CLI for creating a React-based application.
 
 It will setup new project with:
@@ -21,6 +20,16 @@ Install globally:
 
 In command line: `create-mediaproject`
 
+```
+$ create-mediaproject --help
+Options:
+      --version   Show version number                                  [boolean]
+  -d, --dir       Project directory (also name)                         [string]
+  -t, --template  Template name                                         [string]
+      --dev       Dev mode                                             [boolean]
+  -h, --help      Show help                                            [boolean]
+```
+
 It will ask several questions:
 ```
 ? Select project type vk-mini-app
@@ -30,6 +39,11 @@ It will ask several questions:
 For now there is only one project type available: [vk mini apps](https://vk.com/dev/vk_apps_docs)
 
 After that you will have project in specified directory with git initialized and dependencies installed.
+
+### Dev Mode
+* Setup new project at temorary directory 'dev'
+* Run 'yarn dev'
+* Watch src/templates/<%templateName%> content and copy to temporary directory
 
 ### Project structure
 Project description and file structure described in template's readme.

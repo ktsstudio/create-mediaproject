@@ -1,3 +1,6 @@
+### v1.1.0
+* create-mediaproject
+-- Dev Mode
 ### v1.0.4
 * vk-mini-app template
 -- Views/Panels auto-generating from enumerations config
