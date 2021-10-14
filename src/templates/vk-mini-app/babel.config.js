@@ -1,7 +1,9 @@
-module.exports = (api) => {
-  const env = api.cache(() => process.env.NODE_ENV);
+const {
+  generateScopedNameFactory,
+} = require('@dr.pogodin/babel-plugin-react-css-modules/utils');
 
-  const isProd = process.env.NODE_ENV === 'production';
+module.exports = (api) => {
+  api.cache(() => process.env.NODE_ENV);
 
   return {
     presets: [
@@ -10,10 +12,11 @@ module.exports = (api) => {
         {
           useBuiltIns: 'entry',
           corejs: 3,
+          targets: { browsers: 'last 2 versions' },
         },
       ],
-      require('@babel/preset-react'),
       require('@babel/preset-typescript'),
+      require('@babel/preset-react'),
     ],
     plugins: [
       [require('@babel/plugin-proposal-decorators'), { legacy: true }],
@@ -29,13 +32,14 @@ module.exports = (api) => {
               plugins: ['postcss-nested'],
             },
           },
-          generateScopedName: '[name]__[local]__[contenthash:base64:5]',
+          generateScopedName: generateScopedNameFactory(
+            '[name]__[local]__[contenthash:base64:5]'
+          ),
           webpackHotModuleReloading: true,
           autoResolveMultipleImports: true,
           handleMissingStyleName: 'warn',
         },
       ],
-      !isProd && require.resolve('react-refresh/babel'),
     ].filter(Boolean),
   };
 };

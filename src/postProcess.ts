@@ -14,8 +14,9 @@ export const installDeps = (): void => {
   }
 };
 
+const INITIAL_BRANCH = 'main';
 export const initGit = (): void => {
-  exec('git init');
+  exec(`git init --initial-branch ${INITIAL_BRANCH}`);
 };
 
 export function postProcess(options: OptionsType) {

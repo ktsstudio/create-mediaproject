@@ -1,10 +1,10 @@
 include:
   project: mnt/ci
   file: front/ci-special.yaml
+  ref: new-front
 
 variables:
-  BASE_DOMAIN: <%= projectName %>.kube1.ktsdev2.ru
-  VK_PROD_APP_ID:
-  API_URL: /api/
-  API_PROD_URL: https://<%= projectName %>.ru-prod2.kts.studio/api/
+  PROD_DOMAIN: <%= projectName %>.ru-prod2.kts.studio
+  DEV_BASE_DOMAIN: <%= projectName %>.kube1.ktsdev2.ru
   DEV_API_DOMAIN: <%= projectName %>.kube1.ktsdev2.ru
+  VK_PROD_APP_ID: 1234567

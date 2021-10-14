@@ -27,12 +27,6 @@ export const parseOptions = async (): Promise<OptionsType> => {
 
   const questions = [
     {
-      name: 'targetPath',
-      type: 'input',
-      message: 'Directory for project',
-      when: () => !argv['dir'],
-    },
-    {
       name: 'templateName',
       type: 'list',
       message: 'Select project type',
@@ -41,7 +35,7 @@ export const parseOptions = async (): Promise<OptionsType> => {
     {
       name: 'projectName',
       type: 'input',
-      message: 'Project name',
+      message: 'Project name (also directory)',
       validate: (input: string) => {
         if (/^([A-Za-z\-_\d])+$/.test(input)) {
           return true;
@@ -53,13 +47,13 @@ export const parseOptions = async (): Promise<OptionsType> => {
 
   const answers = await prompt(questions);
 
-  const { templateName, projectName, targetPath = argv.dir } = answers;
+  const { templateName, projectName = argv.dir } = answers;
 
   return {
     projectName,
     templateName,
-    targetPath,
-    fullProjectPath: targetPath,
+    targetPath: projectName,
+    fullProjectPath: projectName,
     templatePath: path.join(templatesPath, templateName),
   };
 };

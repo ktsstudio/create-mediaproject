@@ -1,4 +1,3 @@
-import * as Sentry from '@sentry/browser';
 import * as React from 'react';
 
 import './ErrorBoundary.scss';
@@ -14,11 +13,8 @@ interface State {
 class ErrorBoundary extends React.Component<Props, State> {
   state = { hasError: false };
 
-  componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
+  componentDidCatch() {
     this.setState({ hasError: true });
-    if (window.IS_PRODUCTION) {
-      Sentry.captureException(error);
-    }
   }
 
   render() {

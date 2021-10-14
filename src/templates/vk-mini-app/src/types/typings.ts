@@ -8,20 +8,16 @@ declare module '*.svg';
 declare module '*.jpg';
 
 interface Window {
+  IS_DEV: boolean;
+  IS_PRODUCTION: boolean;
+  IS_MOBILE: boolean;
+  PLATFORM: string;
+  LOCATION_HASH: string;
   app_id: number;
   scope: string | null;
   user_id: number | null;
-  IS_PRODUCTION: boolean;
   access_token: string;
   group_id: number | null;
   search: string;
-  PLATFORM: string;
-  IS_MOBILE: boolean;
-  LOCATION_HASH: string;
   page: string | null;
-  IS_DEV: boolean;
 }
-
-declare module 'eruda';
-
-declare module 'react-slick';

@@ -1,7 +1,8 @@
+import { api } from '@ktsstudio/mediaproject-utils';
 import bridge from '@vkontakte/vk-bridge';
 import { makeAutoObservable } from 'mobx';
+
 import urls from 'config/urls';
-import api from 'utils/api';
 
 import { RootStore } from './RootStore';
 import { normalizeAuth } from './types';

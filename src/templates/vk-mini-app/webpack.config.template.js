@@ -1,45 +1,42 @@
 const path = require('path');
 
 const webpack = require('webpack');
-const HtmlWepbackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const TerserPlugin = require('terser-webpack-plugin');
+const autoprefixer = require('autoprefixer');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
-const SentryCliPlugin = require('@sentry/webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const PreloadWebpackPlugin = require('@vue/preload-webpack-plugin');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
-
-const packageJson = require('./package');
+const {
+  getLocalIdent,
+} = require('@dr.pogodin/babel-plugin-react-css-modules/utils');
 
 const srcPath = path.resolve(__dirname, 'src');
 const buildPath = path.resolve(__dirname, 'public');
 
 const isProd = process.env.NODE_ENV === 'production';
+const isZip = process.env.IS_ZIP === 'true';
 
-const sentryPlugin = isProd
-  ? [
-      // new SentryCliPlugin({
-      //   release: packageJson.version,
-      //   include: './public',
-      //   sourceMapReference: true,
-      //   ignore: ['node_modules', 'webpack.config.js'],
-      // }),
-    ]
-  : [];
+const REGEXP = {
+  nodeModules: /node_modules/,
+  scripts: /\.(ts|js)x?$/,
+  styles: /\.s?css$/,
+  stylesModules: /\.modules\.(s?css|sass)$/,
+  images: /\.(png|jpg|gif|svg)$/,
+  svgComponents: /\.(component|c)\.svg$/,
+  fonts: /\.(eot|woff2|woff?)$/,
+};
 
 const getCSSLoader = (withModules = false) => [
-  isProd
-    ? {
-        loader: MiniCssExtractPlugin.loader,
-      }
-    : {
-        loader: 'style-loader',
-      },
+  {
+    loader: isProd ? MiniCssExtractPlugin.loader : 'style-loader',
+  },
   {
     loader: 'css-loader',
     options: {
       modules: withModules && {
+        getLocalIdent,
         localIdentName: '[name]__[local]__[contenthash:base64:5]',
       },
       importLoaders: 1,
@@ -51,6 +48,7 @@ const getCSSLoader = (withModules = false) => [
     options: {
       postcssOptions: {
         config: path.resolve(__dirname, 'postcss.config.js'),
+        plugins: () => [autoprefixer()],
       },
     },
   },
@@ -58,126 +56,158 @@ const getCSSLoader = (withModules = false) => [
     loader: 'sass-loader',
     options: {
       sassOptions: {
-        includePaths: [srcPath],
+        includePaths: [srcPath, path.join(srcPath, 'styles')],
       },
     },
   },
 ];
 
-module.exports = {
-  entry: path.join(srcPath, 'index.tsx'),
-  output: {
-    filename: 'static/js/bundle.[contenthash].js',
-    path: buildPath,
-  },
-  devtool: isProd ? 'source-map' : 'eval-source-map',
-  optimization: {
-    minimize: isProd,
-    minimizer: isProd
-      ? [
-          new TerserPlugin({
-            parallel: true,
-            terserOptions: {
-              sourceMap: true,
-            },
-          }),
-        ]
-      : [],
-  },
-  module: {
-    rules: [
-      {
-        test: /\.(ts|js)x?$/,
-        loader: 'babel-loader',
-        exclude: '/node_modules/',
-      },
-      {
-        test: /\.s?css$/,
-        // exclude: '/node_modules/',
-        exclude: /\.modules\.(s?css|sass)$/,
-        use: getCSSLoader(false),
-      },
-      {
-        test: /\.modules\.(s?css|sass)$/,
-        use: getCSSLoader(true),
-      },
-      {
-        test: /\.svg$/,
-        use: [
-          {
-            loader: '@svgr/webpack',
-            options: {
-              memo: true,
-              svgoConfig: {
-                plugins: {
-                  removeViewBox: false,
-                },
-              },
-            },
-          },
-        ],
-      },
-      {
-        test: /\.(png|jpg|jpeg|gif)$/,
-        type: 'asset',
-        generator: {
-          filename: 'static/img/[name].[contenthash][ext]',
+const preloadPlugin = isZip
+  ? []
+  : [
+      new PreloadWebpackPlugin({
+        rel: 'preload',
+        include: 'initial',
+        fileWhitelist: [REGEXP.fonts],
+        as(entry) {
+          return REGEXP.fonts.test(entry) ? 'font' : 'script';
         },
-      },
+      }),
+    ];
+
+const buildFilename = (path, filename) =>
+  `${isZip ? '' : `${path}/`}${filename}`;
+
+const rules = () => [
+  {
+    test: REGEXP.scripts,
+    exclude: REGEXP.nodeModules,
+    use: [
       {
-        test: /\.(eot|woff2|woff|ttf?)$/,
-        type: 'asset',
-        generator: {
-          filename: 'static/fonts/[name].[contenthash][ext]',
+        loader: require.resolve('babel-loader'),
+        options: {
+          plugins: [!isProd && require.resolve('react-refresh/babel')].filter(
+            Boolean
+          ),
         },
       },
     ],
   },
-  plugins: [
-    new CleanWebpackPlugin(),
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: JSON.stringify(process.env.NODE_ENV),
-        API_URL: JSON.stringify(process.env.API_URL || '/api/'),
+  {
+    test: REGEXP.images,
+    exclude: REGEXP.svgComponents,
+    type: 'asset',
+    generator: {
+      filename: buildFilename('img', '[name].[hash][ext]'),
+    },
+  },
+  {
+    test: REGEXP.svgComponents,
+    use: [
+      {
+        loader: '@svgr/webpack',
+        options: {
+          memo: true,
+        },
       },
-    }),
-    new HtmlWepbackPlugin({ template: path.resolve(srcPath, 'index.html') }),
-    new ForkTsCheckerWebpackPlugin(),
-    new MiniCssExtractPlugin({
-      filename: 'static/css/bundle.[name].[contenthash].css',
-    }),
-    new PreloadWebpackPlugin({
-      rel: 'preload',
-      fileWhitelist: [/\.(woff2|woff?)$/],
-    }),
-    !isProd && new ReactRefreshWebpackPlugin(),
-    ...sentryPlugin,
-  ].filter(Boolean),
+    ],
+  },
+  {
+    test: REGEXP.fonts,
+    type: 'asset',
+    generator: {
+      filename: buildFilename('fonts', '[name].[hash][ext]'),
+    },
+  },
+  {
+    test: REGEXP.styles,
+    exclude: REGEXP.stylesModules,
+    use: getCSSLoader(false),
+  },
+  {
+    test: REGEXP.stylesModules,
+    use: getCSSLoader(true),
+  },
+];
+
+const plugins = () => [
+  new webpack.DefinePlugin({
+    'process.env': {
+      NODE_ENV: JSON.stringify(process.env.NODE_ENV),
+      API_URL: JSON.stringify(process.env.API_URL),
+    },
+  }),
+  new HtmlWebpackPlugin({
+    filename: 'index.html',
+    template: path.join(srcPath, 'index.html'),
+  }),
+  new MiniCssExtractPlugin({
+    filename: buildFilename('styles', 'bundle.[name].[contenthash].css'),
+  }),
+  new ForkTsCheckerWebpackPlugin({
+    typescript: {
+      configFile: path.resolve(__dirname, 'tsconfig.json'),
+    },
+  }),
+  new CopyPlugin({
+    patterns: [
+      {
+        from: path.join(srcPath, 'img', 'static'),
+        to: path.join(buildPath, 'static'),
+        noErrorOnMissing: true,
+      },
+    ],
+  }),
+  !isProd && new ReactRefreshWebpackPlugin(),
+  ...preloadPlugin,
+];
+
+const devServer = () => ({
+  host: '0.0.0.0',
+  historyApiFallback: true,
+  hot: true,
+  https: true,
+  proxy: {
+    '/api': {
+      changeOrigin: true,
+      target: 'https://<%= projectName %>.kube1.ktsdev.ru/',
+      secure: true,
+    },
+  },
+});
+
+const aliases = [
+  'components',
+  'config',
+  'img',
+  'pages',
+  'store',
+  'styles',
+  'utils',
+];
+const generateAliases = () =>
+  aliases.reduce(
+    (prev, alias) => ({ ...prev, [alias]: path.join(srcPath, alias) }),
+    {}
+  );
+
+module.exports = {
+  mode: isProd ? 'production' : 'development',
+  context: srcPath,
+  devtool: isProd ? 'hidden-source-map' : 'source-map',
+  entry: './index.tsx',
+  output: {
+    path: buildPath,
+    publicPath: isZip ? './' : '/',
+    filename: '[name].[fullhash:8].js',
+  },
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx'],
-    alias: {
-      styles: path.join(srcPath, 'styles'),
-      config: path.join(srcPath, 'config'),
-      store: path.join(srcPath, 'store'),
-      pages: path.join(srcPath, 'pages'),
-      components: path.join(srcPath, 'components'),
-      utils: path.join(srcPath, 'utils'),
-      img: path.join(srcPath, 'img'),
-    },
+    alias: generateAliases(),
   },
-  devServer: {
-    host: '127.0.0.1',
-    port: 8000,
-    historyApiFallback: true,
-    inline: true,
-    hot: true,
-    https: false,
-    proxy: {
-      '/api': {
-        changeOrigin: true,
-        target: 'https://<%= projectName %>.myteam.ru',
-        secure: true,
-      },
-    },
+  module: {
+    rules: rules(),
   },
+  plugins: plugins().filter(Boolean),
+  devServer: devServer(),
 };

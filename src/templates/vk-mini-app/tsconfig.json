@@ -2,14 +2,14 @@
   "compilerOptions": {
     "baseUrl": "./src",
     "paths": {
-      "styles": ["styles/*"],
-      "config": ["config/*"],
-      "store": ["store/*"],
-      "pages": ["pages/*"],
       "components": ["components/*"],
-      "utils": ["utils/*"],
-      "libs": ["libs/*"],
-      "img": ["img/*"]
+      "config": ["config/*"],
+      "img": ["img/*"],
+      "pages": ["pages/*"],
+      "store": ["store/*"],
+      "styles": ["styles/*"],
+      "types": ["types/*"],
+      "utils": ["utils/*"]
     },
     "typeRoots": ["./node_modules/@types", "types"],
     "strictPropertyInitialization": false,

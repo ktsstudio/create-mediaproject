@@ -1,13 +1,13 @@
 {
   "name": "@ktsstudio/create-mediaproject",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "author": "KTS Studio",
   "license": "MIT",
   "description": "Package-template for kts special project frontend",
   "scripts": {
     "lint": "eslint src --fix",
     "codestyle": "prettier src --write \"*.{ts,js}?(x)\"",
-    "run": "ts-node ./src/index.ts",
+    "start": "ts-node ./src/index.ts",
     "clear": "rm -rf ./dist",
     "copy-templates": "cp -r ./src/templates ./dist/templates",
     "build": "yarn clear && tsc && yarn copy-templates",
@@ -32,7 +32,19 @@
     "@types/inquirer": "^7.3.1",
     "@types/shelljs": "^0.8.8",
     "@types/yargs": "^16.0.0",
-    "eslint": "7.17.0",
-    "ts-node": "^9.1.1"
+    "@typescript-eslint/eslint-plugin": "^4.28.2",
+    "@typescript-eslint/parser": "^4.28.2",
+    "eslint": "^7.30.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-import-resolver-typescript": "^2.4.0",
+    "eslint-import-resolver-webpack": "^0.13.1",
+    "eslint-module-utils": "^2.6.1",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.24.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "prettier": "^2.3.2",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.4.3"
   }
 }

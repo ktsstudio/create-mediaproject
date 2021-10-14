@@ -1,6 +1,7 @@
 import { Panel } from '@vkontakte/vkui';
 import { observer } from 'mobx-react';
 import * as React from 'react';
+
 import Header from 'components/Header';
 import Container from 'components/special/Container';
 import { routes } from 'config/routes';
