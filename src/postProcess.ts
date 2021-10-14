@@ -19,7 +19,7 @@ export const initGit = (): void => {
   exec(`git init --initial-branch ${INITIAL_BRANCH}`);
 };
 
-export function postProcess(options: OptionsType) {
+export function postProcess(options: OptionsType): void {
   cd(options.fullProjectPath);
 
   initGit();

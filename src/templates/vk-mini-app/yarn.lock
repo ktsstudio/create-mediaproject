@@ -1439,7 +1439,7 @@
   resolved "https://registry.yarnpkg.com/@vkontakte/vkjs/-/vkjs-0.22.1.tgz#ab740365626873fd7940c3b430d438d5bf33b110"
   integrity sha512-gDlJYAIIH4K0L8Qz2bE/cIdz5XWSwvEVytkK4mXC7lGTVTF/PuidUb8MZ792AaqTxdoASOoBD1Jy89q/GjaOSg==
 
-"@vkontakte/vkui@^4.10.0":
+"@vkontakte/vkui@^4.17.0":
   version "4.17.0"
   resolved "https://registry.yarnpkg.com/@vkontakte/vkui/-/vkui-4.17.0.tgz#ab3a3b4b03467edaeeb55ce40f35483395b872a4"
   integrity sha512-nZkdAMqLo8O/6pXUGGF6nzBrBxWXFFjLy989gp5L0TrD8rs6RJAE+0E450JvVKjClD/fJl8mC2sKQnNI4hK1hw==

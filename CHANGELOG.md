@@ -1,3 +1,6 @@
+### v1.0.4
+* vk-mini-app template
+-- Views/Panels auto-generating from enumerations config
 ### v1.0.3
 * create-mediaproject
 -- Template's media files copying fixed

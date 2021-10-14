@@ -1,25 +1,27 @@
+import { ConfigProvider } from '@vkontakte/vkui';
 import { Provider } from 'mobx-react';
 import * as React from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { MemoryRouter, BrowserRouter } from 'react-router-dom';
 
+import routes from 'config/routes';
 import Root from 'pages/Root';
-import Splash from 'pages/Splash';
 import stores from 'store/index';
+import { useVKViews } from 'utils/useVKViews';
 
 import './styles/styles.scss';
-import '@vkontakte/vkui/dist/vkui.css';
 
 const App: React.FC = () => {
-  const [appReady, setAppReady] = React.useState(false);
-  const handleAppReady = () => setAppReady(true);
+  const Router: any = window.is_odr ? MemoryRouter : BrowserRouter;
+  const [views] = React.useState(() => useVKViews(routes));
 
   return (
-    <Router>
-      <Provider {...stores}>
-        {!appReady && <Splash onReady={handleAppReady} />}
-        {appReady && <Root />}
-      </Provider>
-    </Router>
+    <ConfigProvider transitionMotionEnabled={false}>
+      <Router>
+        <Provider {...stores}>
+          <Root {...views} />
+        </Provider>
+      </Router>
+    </ConfigProvider>
   );
 };
 

@@ -1,12 +1,4 @@
 import * as React from 'react';
-import { useLocation } from 'react-router-dom';
-
-export const useView = (): [string, string] => {
-  const { pathname } = useLocation();
-  const [_, view, panel] = pathname.split('/');
-
-  return [view, panel];
-};
 
 export const useEventListener = (
   target:
