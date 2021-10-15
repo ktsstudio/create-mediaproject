@@ -1,6 +1,3 @@
-### v1.0.4
-* vk-mini-app template
--- Views/Panels auto-generating from enumerations config
 ### v1.0.3
 * create-mediaproject
 -- Template's media files copying fixed
@@ -14,5 +11,7 @@
 -- Gitlab-CI new-front ref added
 -- @ktsstudio/mediaproject-utils and @ktsstudio/mediaproject-vk added
 -- Refresh Webpack fixed
+-- Views/Panels auto-generating from enumerations config
+
 ### v1.0.2
 * Updated readme for vk-mini-app template
