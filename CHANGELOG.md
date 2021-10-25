@@ -1,3 +1,9 @@
+### v1.0.4
+* vk-mini-app template
+-- Build static files to .public/static/**/*
+-- Build-ZIP static files to ./public/*
+-- Display styled-components' style names in development mode
+
 ### v1.0.3
 * create-mediaproject
 -- Template's media files copying fixed
