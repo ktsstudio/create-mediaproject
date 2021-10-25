@@ -75,8 +75,11 @@ const preloadPlugin = isZip
       }),
     ];
 
+const buildStaticPath = (path) =>
+  `${isZip ? '' : `static/${path}`}`;
+    
 const buildFilename = (path, filename) =>
-  `${isZip ? '' : `${path}/`}${filename}`;
+  `${isZip ? '' : `static/${path}/`}${filename}`;
 
 const rules = () => [
   {
@@ -142,7 +145,7 @@ const plugins = () => [
     template: path.join(srcPath, 'index.html'),
   }),
   new MiniCssExtractPlugin({
-    filename: buildFilename('styles', 'bundle.[name].[contenthash].css'),
+    filename: buildFilename('css', 'bundle.[name].[contenthash].css'),
   }),
   new ForkTsCheckerWebpackPlugin({
     typescript: {
@@ -153,11 +156,12 @@ const plugins = () => [
     patterns: [
       {
         from: path.join(srcPath, 'img', 'static'),
-        to: path.join(buildPath, 'static'),
+        to: buildStaticPath('img'),
         noErrorOnMissing: true,
       },
     ],
   }),
+  new webpack.ProgressPlugin(),
   !isProd && new ReactRefreshWebpackPlugin(),
   ...preloadPlugin,
 ];
@@ -199,7 +203,7 @@ module.exports = {
   output: {
     path: buildPath,
     publicPath: isZip ? './' : '/',
-    filename: '[name].[fullhash:8].js',
+    filename: buildFilename('js', '[name].[fullhash:8].js'),
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx'],

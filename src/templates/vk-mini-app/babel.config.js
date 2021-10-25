@@ -5,6 +5,8 @@ const {
 module.exports = (api) => {
   api.cache(() => process.env.NODE_ENV);
 
+  const IS_DEV = process.env.NODE_ENV === 'development';
+
   return {
     presets: [
       [
@@ -19,6 +21,7 @@ module.exports = (api) => {
       require('@babel/preset-react'),
     ],
     plugins: [
+      [require('babel-plugin-styled-components'), { displayName: IS_DEV }],
       [require('@babel/plugin-proposal-decorators'), { legacy: true }],
       require('@babel/plugin-proposal-export-default-from'),
       require('@babel/plugin-proposal-class-properties'),
