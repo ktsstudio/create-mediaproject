@@ -155,8 +155,8 @@ const plugins = () => [
   new CopyPlugin({
     patterns: [
       {
-        from: path.join(srcPath, 'img', 'static'),
-        to: buildStaticPath('img'),
+        from: path.join(srcPath, 'static'),
+        to: buildStaticPath('static'),
         noErrorOnMissing: true,
       },
     ],
