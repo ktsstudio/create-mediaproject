@@ -75,9 +75,8 @@ const preloadPlugin = isZip
       }),
     ];
 
-const buildStaticPath = (path) =>
-  `${isZip ? '' : `static/${path}`}`;
-    
+const buildStaticPath = (path) => `${isZip ? '' : `static/${path}`}`;
+
 const buildFilename = (path, filename) =>
   `${isZip ? '' : `static/${path}/`}${filename}`;
 
@@ -111,6 +110,11 @@ const rules = () => [
         loader: '@svgr/webpack',
         options: {
           memo: true,
+          svgoConfig: {
+            plugins: {
+              removeViewBox: false,
+            },
+          },
         },
       },
     ],

@@ -25,3 +25,30 @@
   height: 30rem;
   display: flex;
 }
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  width: 30rem;
+  height: 40rem;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  padding: 4rem;
+  box-shadow: 0 0 2rem rgba(0, 0, 0, 0.6);
+}
+
+.modal_title {
+  padding: 1rem 0;
+  text-align: center;
+}

@@ -3,13 +3,17 @@ import { observer } from 'mobx-react';
 import * as React from 'react';
 
 import Container from 'components/special/Container';
+import config from 'config/routes';
 import { allStatics } from 'img/config';
+import { useVKHistory } from 'utils/router';
 
 interface Props {
   onReady(): void;
 }
 
 const Splash: React.FC<Props> = ({ onReady }: Props) => {
+  const { replace } = useVKHistory();
+
   const [progress, setProgress] = React.useState(0);
   const imagesLength = allStatics.length;
   const progressPercent = Math.floor((progress / imagesLength) * 100) || 0;
@@ -19,7 +23,10 @@ const Splash: React.FC<Props> = ({ onReady }: Props) => {
       .then(() =>
         loadImages(allStatics, () => setProgress((p: number) => p + 1))
       )
-      .then(onReady);
+      .then(() => {
+        replace({ panel: config.defaultPanel, canSwipeBack: false });
+        onReady();
+      });
   }, []);
 
   return (

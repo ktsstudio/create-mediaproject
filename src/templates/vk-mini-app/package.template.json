@@ -16,14 +16,9 @@
     "precommit": "lint-staged"
   },
   "homepage": "./",
-  "commands": [
-    "yarn build"
-  ],
+  "commands": ["yarn build"],
   "lint-staged": {
-    "*.{ts,js}?(x)": [
-      "yarn run lint-fix",
-      "yarn run codestyle-fix"
-    ]
+    "*.{ts,js}?(x)": ["yarn run lint-fix", "yarn run codestyle-fix"]
   },
   "husky": {
     "hooks": {
@@ -31,8 +26,8 @@
     }
   },
   "dependencies": {
-    "@ktsstudio/mediaproject-utils": "^2.0.5",
-    "@ktsstudio/mediaproject-vk": "^1.0.11",
+    "@ktsstudio/mediaproject-utils": "^2.0.6",
+    "@ktsstudio/mediaproject-vk": "^1.0.12",
     "@vkontakte/icons": "^1.110.0",
     "@vkontakte/vk-bridge": "^2.4.2",
     "@vkontakte/vkjs": "^0.22.1",
