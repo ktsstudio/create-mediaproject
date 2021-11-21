@@ -1,7 +1,7 @@
 include:
   project: mnt/ci
   file: front/ci-special.yaml
-  ref: new-front
+  ref: ${MNT_CI_REF}
 
 variables:
   PROD_DOMAIN: <%= projectName %>.ru-prod2.kts.studio
