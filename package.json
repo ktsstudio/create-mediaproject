@@ -13,6 +13,12 @@
     "build": "yarn clear && tsc && yarn copy-templates",
     "precommit": "yarn run lint && yarn run codestyle"
   },
+  "files": [
+    "dist/",
+    "README.md",
+    "CHANGELOG.md",
+    "package.json"
+  ],
   "bin": "./dist/index.js",
   "dependencies": {
     "chalk": "^4.1.0",
