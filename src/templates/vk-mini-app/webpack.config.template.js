@@ -1,16 +1,16 @@
 const path = require('path');
 
-const webpack = require('webpack');
-const autoprefixer = require('autoprefixer');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CopyPlugin = require('copy-webpack-plugin');
-const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const PreloadWebpackPlugin = require('@vue/preload-webpack-plugin');
-const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 const {
   getLocalIdent,
 } = require('@dr.pogodin/babel-plugin-react-css-modules/utils');
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
+const PreloadWebpackPlugin = require('@vue/preload-webpack-plugin');
+const autoprefixer = require('autoprefixer');
+const CopyPlugin = require('copy-webpack-plugin');
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const webpack = require('webpack');
 
 const srcPath = path.resolve(__dirname, 'src');
 const buildPath = path.resolve(__dirname, 'public');
@@ -75,7 +75,7 @@ const preloadPlugin = isZip
       }),
     ];
 
-const buildStaticPath = (path) => `${isZip ? '' : `static/${path}`}`;
+const buildStaticPath = (path) => (isZip ? '' : `static/${path}`);
 
 const buildFilename = (path, filename) =>
   `${isZip ? '' : `static/${path}/`}${filename}`;

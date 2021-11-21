@@ -1,24 +1,19 @@
 import { View, Root as VKRoot } from '@vkontakte/vkui';
-import { observer } from 'mobx-react';
-import * as React from 'react';
-
 import VKPanel from 'components/special/VKPanel';
 import config from 'config/routes';
+import { observer } from 'mobx-react';
 import Splash from 'pages/Splash';
-import { useVKLocation } from 'utils/router';
-import { VKViewsType } from 'utils/router/utils/views/types';
+import * as React from 'react';
+import { useVKLocation, useVKViews } from 'utils/router';
 
 import '../../styles/styles.scss';
 
-type RootProps = {
-  views: VKViewsType;
-};
-
-const Root: React.FC<RootProps> = ({ views }: RootProps) => {
+const Root: React.FC = () => {
+  const views = useVKViews();
   const [appReady, setAppReady] = React.useState(false);
   const { view: activeView, panel: activePanel } = useVKLocation();
 
-  const handleAppReady = React.useCallback(async () => {
+  const handleAppReady = React.useCallback(() => {
     setAppReady(true);
   }, []);
 
@@ -28,7 +23,7 @@ const Root: React.FC<RootProps> = ({ views }: RootProps) => {
 
   return (
     <VKRoot activeView={activeView}>
-      {Object.entries(views).map(([view, viewPanels]) => (
+      {views.map(([view, viewPanels]) => (
         <View
           key={view}
           id={view}

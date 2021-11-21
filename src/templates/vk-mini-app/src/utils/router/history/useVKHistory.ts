@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { useHistory } from 'react-router';
 
 import { useVKLocation } from '../location/useVKLocation';
@@ -12,37 +13,41 @@ export function useVKHistory<
   const { panel: activePanel } = useVKLocation();
   const { push, replace, goBack } = useHistory();
 
-  return {
-    push: ({
-      panel = undefined,
-      modal = undefined,
-      canSwipeBack = true,
-      state = undefined,
-    }: PushOrReplaceVKLocationParams<LocationStateType>) => {
-      push(
-        buildVKLocation({
-          panel: panel ? panel : activePanel,
-          modal,
-          canSwipeBack,
-          state,
-        })
-      );
-    },
-    replace: ({
-      panel = undefined,
-      modal = undefined,
-      canSwipeBack = true,
-      state = undefined,
-    }: PushOrReplaceVKLocationParams<LocationStateType>) => {
-      replace(
-        buildVKLocation({
-          panel: panel ? panel : activePanel,
-          modal,
-          canSwipeBack,
-          state,
-        })
-      );
-    },
-    goBack,
-  };
+  const history = React.useMemo(() => {
+    return {
+      push: ({
+        panel = undefined,
+        modal = undefined,
+        canSwipeBack = true,
+        state = undefined,
+      }: PushOrReplaceVKLocationParams<LocationStateType>) => {
+        push(
+          buildVKLocation({
+            panel: panel || activePanel,
+            modal,
+            canSwipeBack,
+            state,
+          })
+        );
+      },
+      replace: ({
+        panel = undefined,
+        modal = undefined,
+        canSwipeBack = true,
+        state = undefined,
+      }: PushOrReplaceVKLocationParams<LocationStateType>) => {
+        replace(
+          buildVKLocation({
+            panel: panel || activePanel,
+            modal,
+            canSwipeBack,
+            state,
+          })
+        );
+      },
+      goBack,
+    };
+  }, []);
+
+  return history;
 }

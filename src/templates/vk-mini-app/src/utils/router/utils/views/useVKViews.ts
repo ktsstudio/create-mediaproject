@@ -1,22 +1,25 @@
-import * as React from 'react';
-
 import config from 'config/routes';
 import { VKRouteType } from 'config/routes/types';
+import * as React from 'react';
 
 import { UseVKViewsType, VKViewsType } from './types';
 
 // получение списка вьюшек со списком панелей для каждой
-export const useVKViews: UseVKViewsType = () => {
+// возвращает массив пар, где первое значение - вьюшка, а второе - массив панелей вьюшки
+// формат возвращаемых данных - [view, viewPanels][]
+export const useVKViews: UseVKViewsType = (): VKViewsType => {
   const [views] = React.useState(
     () =>
-      Object.values(config.routes).reduce(
-        (viewRoutes, { panel, view }: VKRouteType) => ({
-          ...viewRoutes,
-          [view]: viewRoutes[view] ? [...viewRoutes[view], panel] : [panel],
-        }),
-        {}
+      Object.entries(
+        Object.values(config.routes).reduce(
+          (viewRoutes, { panel, view }: VKRouteType) => ({
+            ...viewRoutes,
+            [view]: viewRoutes[view] ? [...viewRoutes[view], panel] : [panel],
+          }),
+          {}
+        )
       ) as VKViewsType
   );
 
-  return [views];
+  return views;
 };

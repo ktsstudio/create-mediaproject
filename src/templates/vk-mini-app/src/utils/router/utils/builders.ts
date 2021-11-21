@@ -1,6 +1,5 @@
-import { LocationDescriptor } from 'history';
-
 import config, { PanelEnum } from 'config/routes';
+import { LocationDescriptor } from 'history';
 
 import { VKLocationParams, VKLocationStateType } from '../location/types';
 
@@ -22,8 +21,8 @@ export function buildVKLocation<LocationStateType>({
   const config = {
     pathname: buildVKPathname(panel),
     state: {
-      modal: modal,
-      canSwipeBack: canSwipeBack,
+      modal,
+      canSwipeBack,
     },
   };
 

@@ -1,18 +1,15 @@
-import { Button } from '@vkontakte/vkui';
+import { PanelEnum } from 'config/routes';
 import { observer } from 'mobx-react';
 import * as React from 'react';
-
-import { PanelEnum } from 'config/routes';
-import { useVKHistory } from 'utils/router';
+import { Link } from 'react-router-dom';
+import { buildVKLocation } from 'utils/router';
 
 const Main: React.FC = () => {
-  const { push } = useVKHistory();
-
   return (
     <div>
-      <Button onClick={() => push({ panel: PanelEnum.onboarding })}>
+      <Link to={buildVKLocation({ panel: PanelEnum.onboarding })}>
         Go to Onboarding
-      </Button>
+      </Link>
     </div>
   );
 };

@@ -1,5 +1,6 @@
 import 'regenerator-runtime/runtime';
-import { fixActive, markup } from '@ktsstudio/mediaproject-utils';
+import { markup } from '@ktsstudio/mediaproject-style';
+import { fixActive } from '@ktsstudio/mediaproject-utils';
 import {
   initializeVkApp,
   setSwipeSettings,

@@ -6,18 +6,12 @@
   "description": "Package-template for kts special project frontend",
   "scripts": {
     "lint": "eslint src --fix",
-    "codestyle": "prettier src --write \"*.{ts,js}?(x)\"",
+    "codestyle": "prettier --write .",
     "start": "ts-node ./src/index.ts",
     "clear": "rm -rf ./dist",
     "copy-templates": "cp -r ./src/templates ./dist/templates",
     "build": "yarn clear && tsc && yarn copy-templates",
-    "precommit": "npx lint-staged"
-  },
-  "lint-staged": {
-    "*.{ts,js}?(x)": [
-      "eslint --fix",
-      "prettier --write"
-    ]
+    "precommit": "yarn run lint && yarn run codestyle"
   },
   "bin": "./dist/index.js",
   "dependencies": {
