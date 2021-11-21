@@ -1,45 +1,47 @@
 # create-mediaproject
 
-CLI for creating a React-based application.
-
-It will setup new project with:
+CLI для создания React-приложений. Создает приложения, использующие:
 
 - React
 - Typescript
 - Webpack 5 + Babel
 - MobX
 - React-router
-- CSS Modules with babel-plugin
+- CSS-Modules с babel-plugin
 - Eslint + Prettier
-- Dockerfile + nginx config for deploy
+- styled-components
 
-### Install
-
-Install globally:
+### Установка
 
 `npm i -g @ktsstudio/create-mediaproject`
+`yarn global add @ktsstudio/create-mediaproject`
 
-### Usage
+### Использование
 
-In command line: `create-mediaproject`
+1. В командной строке ввести: 
+```
+create-mediaproject
+```
 
-It will ask several questions:
+2. Выбрать шаблон проекта (доступные шаблоны проектов перечислены ниже):
 
 ```
 ? Select project type vk-mini-app
+```
+
+3. Ввести имя проекта:
+
+```
 ? Project name my-project
 ```
 
-For now there is only one project type available: [vk mini apps](https://vk.com/dev/vk_apps_docs)
+4. В результате будет создан проект с инициализированным git-репозиторием и установленными зависимостями.
 
-After that you will have project in specified directory with git initialized and dependencies installed.
 
-### Project structure
+### Доступные шаблоны проектов:
+* [vk mini app](https://vk.com/dev/vk_apps_docs)
 
-Project description and file structure described in template's readme.
 
-- [vk-mini-app template](dist/templates/vk-mini-app/README.template.md)
+### Обратная связь
 
-#### Proposals & feedback
-
-Please, fell free to write on [hello@ktsstudio.ru](mailto:hello@ktsstudio.ru) with theme "create-mediaproject feedback"
+Любой фидбэк вы можете передать нам на почту [hello@ktsstudio.ru](mailto:hello@ktsstudio.ru) в письме с темой "create-mediaproject"

@@ -19,6 +19,8 @@
     "CHANGELOG.md",
     "package.json"
   ],
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
   "bin": "./dist/index.js",
   "dependencies": {
     "chalk": "^4.1.0",
@@ -47,5 +49,14 @@
     "prettier": "^2.3.2",
     "ts-node": "^9.1.1",
     "typescript": "^4.4.3"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ktsstudio/create-mediaproject.git"
+  },
+  "private": false,
+  "bugs": {
+    "url": "https://github.com/ktsstudio/create-mediaproject/issues"
+  },
+  "homepage": "https://github.com/ktsstudio/create-mediaproject#readme"
 }
