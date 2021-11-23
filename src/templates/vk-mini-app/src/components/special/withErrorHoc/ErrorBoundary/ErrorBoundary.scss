@@ -1,9 +1,8 @@
-@import '~styles/mixins';
+@import '~@ktsstudio/mediaproject-style/dist/mixins';
 
 .error {
   position: absolute;
-  @include centerPos;
-  @include subtitle;
+  @include centerPos();
   text-align: center;
   color: $white;
 }

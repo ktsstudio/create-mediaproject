@@ -1,24 +1,26 @@
 {
   "name": "@ktsstudio/create-mediaproject",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "author": "KTS Studio",
   "license": "MIT",
   "description": "Package-template for kts special project frontend",
   "scripts": {
     "lint": "eslint src --fix",
-    "codestyle": "prettier src --write \"*.{ts,js}?(x)\"",
+    "codestyle": "prettier --write .",
     "start": "ts-node ./src/index.ts",
     "clear": "rm -rf ./dist",
     "copy-templates": "cp -r ./src/templates ./dist/templates",
     "build": "yarn clear && tsc && yarn copy-templates",
-    "precommit": "npx lint-staged"
+    "precommit": "yarn run lint && yarn run codestyle"
   },
-  "lint-staged": {
-    "*.{ts,js}?(x)": [
-      "eslint --fix",
-      "prettier --write"
-    ]
-  },
+  "files": [
+    "dist/",
+    "README.md",
+    "CHANGELOG.md",
+    "package.json"
+  ],
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
   "bin": "./dist/index.js",
   "dependencies": {
     "chalk": "^4.1.0",
@@ -30,6 +32,7 @@
   "devDependencies": {
     "@types/ejs": "^3.0.5",
     "@types/inquirer": "^7.3.1",
+    "@types/node": "^16.11.7",
     "@types/shelljs": "^0.8.8",
     "@types/yargs": "^16.0.0",
     "@typescript-eslint/eslint-plugin": "^4.28.2",
@@ -46,5 +49,14 @@
     "prettier": "^2.3.2",
     "ts-node": "^9.1.1",
     "typescript": "^4.4.3"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ktsstudio/create-mediaproject.git"
+  },
+  "private": false,
+  "bugs": {
+    "url": "https://github.com/ktsstudio/create-mediaproject/issues"
+  },
+  "homepage": "https://github.com/ktsstudio/create-mediaproject#readme"
 }

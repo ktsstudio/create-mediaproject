@@ -1,1 +1,2 @@
-/src/templates
+/node_modules
+*.template.*

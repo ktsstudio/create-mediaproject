@@ -1,18 +1,15 @@
+import { PanelEnum } from 'config/routes';
 import { observer } from 'mobx-react';
 import * as React from 'react';
-
-import { PanelEnum } from 'config/routes';
-import { useVKRouter } from 'utils/useVKViews';
+import { Link } from 'react-router-dom';
+import { buildVKLocation } from 'utils/router';
 
 const Main: React.FC = () => {
-  const pushPanel = useVKRouter();
-
   return (
     <div>
-      <h1>Main</h1>
-      <div onClick={() => pushPanel(PanelEnum.onboarding)}>
+      <Link to={buildVKLocation({ panel: PanelEnum.onboarding })}>
         Go to Onboarding
-      </div>
+      </Link>
     </div>
   );
 };
