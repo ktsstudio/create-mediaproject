@@ -1,5 +1,6 @@
+@import '~@ktsstudio/mediaproject-style/dist/mixins';
 @import '~styles/fonts/fonts';
-@import '~styles/mixins';
+@import '~styles/colors';
 
 * {
   --font-common: 'VK Sans Display', sans-serif;
@@ -48,7 +49,6 @@ a {
   width: 100%;
   overscroll-behavior: none;
   overflow: auto;
-  @include background;
 
   z-index: 0;
   height: 100vh;
@@ -59,6 +59,7 @@ a {
   top: 0;
   left: 0;
 
+  background: $white;
   color: $black;
 
   transform: translate3d(0, 0, 0);

@@ -1,53 +1,47 @@
 # create-mediaproject
-CLI for creating a React-based application.
 
-It will setup new project with:
-* React
-* Typescript
-* Webpack 5 + Babel
-* MobX
-* React-router
-* CSS Modules with babel-plugin
-* Eslint + Prettier
-* Dockerfile + nginx config for deploy
+CLI для создания React-приложений. Создает приложения, использующие:
 
-### Install
-Install globally:
+- React
+- Typescript
+- Webpack 5 + Babel
+- MobX
+- React-router
+- CSS-Modules с babel-plugin
+- Eslint + Prettier
+- styled-components
 
-`npm i -g @ktsstudio/create-mediaproject` 
+### Установка
 
-### Usage
+`npm i -g @ktsstudio/create-mediaproject`
+`yarn global add @ktsstudio/create-mediaproject`
 
-In command line: `create-mediaproject`
+### Использование
 
+1. В командной строке ввести: 
 ```
-$ create-mediaproject --help
-Options:
-      --version   Show version number                                  [boolean]
-  -d, --dir       Project directory (also name)                         [string]
-  -t, --template  Template name                                         [string]
-      --dev       Dev mode                                             [boolean]
-  -h, --help      Show help                                            [boolean]
+create-mediaproject
 ```
 
-It will ask several questions:
+2. Выбрать шаблон проекта (доступные шаблоны проектов перечислены ниже):
+
 ```
 ? Select project type vk-mini-app
+```
+
+3. Ввести имя проекта:
+
+```
 ? Project name my-project
 ```
 
-For now there is only one project type available: [vk mini apps](https://vk.com/dev/vk_apps_docs)
+4. В результате будет создан проект с инициализированным git-репозиторием и установленными зависимостями.
 
-After that you will have project in specified directory with git initialized and dependencies installed.
 
-### Dev Mode
-* Setup new project at temorary directory 'dev'
-* Run 'yarn dev'
-* Watch src/templates/<%templateName%> content and copy to temporary directory
+### Доступные шаблоны проектов:
+* [vk mini app](https://vk.com/dev/vk_apps_docs)
 
-### Project structure
-Project description and file structure described in template's readme.
-* [vk-mini-app template](dist/templates/vk-mini-app/README.template.md)
 
-#### Proposals & feedback
-Please, fell free to write on [hello@ktsstudio.ru](mailto:hello@ktsstudio.ru) with theme "create-mediaproject feedback"
+### Обратная связь
+
+Любой фидбэк вы можете передать нам на почту [hello@ktsstudio.ru](mailto:hello@ktsstudio.ru) в письме с темой "create-mediaproject"

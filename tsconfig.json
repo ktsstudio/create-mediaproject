@@ -8,6 +8,7 @@
     "declaration": false,
     "noImplicitAny": true,
     "strict": true,
+    "lib": ["esnext", "dom"],
     "target": "es5",
     "experimentalDecorators": true,
     "esModuleInterop": true,

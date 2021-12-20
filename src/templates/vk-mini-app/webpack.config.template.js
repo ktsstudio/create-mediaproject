@@ -1,16 +1,16 @@
 const path = require('path');
 
-const webpack = require('webpack');
-const autoprefixer = require('autoprefixer');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CopyPlugin = require('copy-webpack-plugin');
-const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const PreloadWebpackPlugin = require('@vue/preload-webpack-plugin');
-const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 const {
   getLocalIdent,
 } = require('@dr.pogodin/babel-plugin-react-css-modules/utils');
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
+const PreloadWebpackPlugin = require('@vue/preload-webpack-plugin');
+const autoprefixer = require('autoprefixer');
+const CopyPlugin = require('copy-webpack-plugin');
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const webpack = require('webpack');
 
 const srcPath = path.resolve(__dirname, 'src');
 const buildPath = path.resolve(__dirname, 'public');
@@ -75,8 +75,10 @@ const preloadPlugin = isZip
       }),
     ];
 
+const buildStaticPath = (path) => (isZip ? '' : `static/${path}`);
+
 const buildFilename = (path, filename) =>
-  `${isZip ? '' : `${path}/`}${filename}`;
+  `${isZip ? '' : `static/${path}/`}${filename}`;
 
 const rules = () => [
   {
@@ -108,6 +110,11 @@ const rules = () => [
         loader: '@svgr/webpack',
         options: {
           memo: true,
+          svgoConfig: {
+            plugins: {
+              removeViewBox: false,
+            },
+          },
         },
       },
     ],
@@ -142,7 +149,7 @@ const plugins = () => [
     template: path.join(srcPath, 'index.html'),
   }),
   new MiniCssExtractPlugin({
-    filename: buildFilename('styles', 'bundle.[name].[contenthash].css'),
+    filename: buildFilename('css', 'bundle.[name].[contenthash].css'),
   }),
   new ForkTsCheckerWebpackPlugin({
     typescript: {
@@ -152,12 +159,13 @@ const plugins = () => [
   new CopyPlugin({
     patterns: [
       {
-        from: path.join(srcPath, 'img', 'static'),
-        to: path.join(buildPath, 'static'),
+        from: path.join(srcPath, 'static'),
+        to: buildStaticPath('static'),
         noErrorOnMissing: true,
       },
     ],
   }),
+  new webpack.ProgressPlugin(),
   !isProd && new ReactRefreshWebpackPlugin(),
   ...preloadPlugin,
 ];
@@ -199,7 +207,7 @@ module.exports = {
   output: {
     path: buildPath,
     publicPath: isZip ? './' : '/',
-    filename: '[name].[fullhash:8].js',
+    filename: buildFilename('js', '[name].[fullhash:8].js'),
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx'],

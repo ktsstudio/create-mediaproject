@@ -1,18 +1,6 @@
+import { Header as VKHeader } from '@vkontakte/vkui';
 import * as React from 'react';
 
-import { PanelEnum } from 'config/routes';
-import { useVKRouter } from 'utils/useVKViews';
-
-const Header: React.FC = () => {
-  const pushPanel = useVKRouter();
-  return (
-    <div>
-      <div onClick={() => pushPanel(PanelEnum.firstFirst)}>1-1</div>
-      <div onClick={() => pushPanel(PanelEnum.firstSecond)}>1-2</div>
-      <div onClick={() => pushPanel(PanelEnum.secondFirst)}>2-1</div>
-      <div onClick={() => pushPanel(PanelEnum.secondSecond)}>2-2</div>
-    </div>
-  );
-};
+const Header: React.FC = () => <VKHeader>vk mini app</VKHeader>;
 
 export default React.memo(Header);
