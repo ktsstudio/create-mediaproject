@@ -35,6 +35,7 @@
     "@vkontakte/vkui": "^4.17.0",
     "axios": "^0.22.0",
     "classnames": "^2.2.6",
+    "eruda": "^2.4.1",
     "mobx": "^6.3.2",
     "mobx-react": "^7.2.0",
     "react": "^17.0.2",

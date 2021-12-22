@@ -6,6 +6,7 @@ import {
   setSwipeSettings,
   setViewSettings,
 } from '@ktsstudio/mediaproject-vk';
+import * as eruda from 'eruda';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import '@vkontakte/vkui/dist/vkui.css';
@@ -21,6 +22,11 @@ const startApp = () => {
   setViewSettings();
 
   fixActive();
+
+  // todo: закомментировать перед запуском в прод
+  if (window.is_dev) {
+    eruda.init();
+  }
 
   ReactDOM.render(<App />, document.querySelector('#root'));
 };

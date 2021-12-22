@@ -1,9 +1,10 @@
 import { View, Root as VKRoot } from '@vkontakte/vkui';
-import VKPanel from 'components/special/VKPanel';
-import config from 'config/routes';
 import { observer } from 'mobx-react';
-import Splash from 'pages/Splash';
 import * as React from 'react';
+
+import VKPanel from 'components/special/VKPanel';
+import { routes } from 'config/routes';
+import Splash from 'pages/Splash';
 import { useVKLocation, useVKViews } from 'utils/router';
 
 import '../../styles/styles.scss';
@@ -30,7 +31,7 @@ const Root: React.FC = () => {
           activePanel={activeView === view ? activePanel : viewPanels[0]}
         >
           {viewPanels.map((panel) => {
-            const { Component, fixedHeight } = config.routes[panel];
+            const { Component, fixedHeight } = routes[panel];
 
             return (
               <VKPanel key={panel} id={panel} fixedHeight={fixedHeight}>

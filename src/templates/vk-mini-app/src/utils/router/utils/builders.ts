@@ -1,11 +1,12 @@
-import config, { PanelEnum } from 'config/routes';
 import { LocationDescriptor } from 'history';
+
+import { routes, PanelEnum } from 'config/routes';
 
 import { VKLocationParams, VKLocationStateType } from '../location/types';
 
 // билдит урл текущий страницы, получая вьюшку текущей панели из конфига
 export function buildVKPathname(panel: PanelEnum): string {
-  return `/${config.routes[panel].view}/${panel}`;
+  return `/${routes[panel].view}/${panel}`;
 }
 
 // билдит локейшн по панели, добавляя

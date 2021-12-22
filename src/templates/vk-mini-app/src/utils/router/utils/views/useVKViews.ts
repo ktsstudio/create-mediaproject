@@ -1,6 +1,7 @@
-import config from 'config/routes';
-import { VKRouteType } from 'config/routes/types';
 import * as React from 'react';
+
+import { routes } from 'config/routes';
+import { VKRouteType } from 'config/routes/types';
 
 import { UseVKViewsType, VKViewsType } from './types';
 
@@ -11,7 +12,7 @@ export const useVKViews: UseVKViewsType = (): VKViewsType => {
   const [views] = React.useState(
     () =>
       Object.entries(
-        Object.values(config.routes).reduce(
+        Object.values(routes).reduce(
           (viewRoutes, { panel, view }: VKRouteType) => ({
             ...viewRoutes,
             [view]: viewRoutes[view] ? [...viewRoutes[view], panel] : [panel],

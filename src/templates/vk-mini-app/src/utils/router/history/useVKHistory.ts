@@ -13,7 +13,7 @@ export function useVKHistory<
   const { panel: activePanel } = useVKLocation();
   const { push, replace, goBack } = useHistory();
 
-  const history = React.useMemo(() => {
+  return React.useMemo(() => {
     return {
       push: ({
         panel = undefined,
@@ -48,6 +48,4 @@ export function useVKHistory<
       goBack,
     };
   }, []);
-
-  return history;
 }

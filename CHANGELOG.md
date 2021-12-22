@@ -1,3 +1,9 @@
+### v1.0.6
+- vk-mini-app template
+  - vk-tunnel-config file
+  - use withErrorHoc in VKPanel
+  - eruda in dev
+
 ### v1.0.5
 
 - vk-mini-app template

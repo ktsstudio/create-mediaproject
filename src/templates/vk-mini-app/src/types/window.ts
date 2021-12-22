@@ -1,6 +1,7 @@
 import { WindowType } from '@ktsstudio/mediaproject-vk';
 
 declare global {
-  // eslint-disable-next-line
-  interface Window extends WindowType {}
+  interface Window extends WindowType {
+    is_dev: boolean;
+  }
 }

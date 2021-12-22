@@ -1,8 +1,10 @@
 import { Panel } from '@vkontakte/vkui';
-import Header from 'components/Header';
-import Container from 'components/special/Container';
 import { observer } from 'mobx-react';
 import * as React from 'react';
+
+import Header from 'components/Header';
+import Container from 'components/special/Container';
+import withErrorHoc from 'components/special/withErrorHoc';
 
 type VKPanelProps = {
   id: string;
@@ -25,4 +27,4 @@ const VKPanel: React.FC<VKPanelProps> = ({
   );
 };
 
-export default observer(VKPanel);
+export default withErrorHoc(observer(VKPanel));
