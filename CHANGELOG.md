@@ -3,6 +3,7 @@
   - vk-tunnel-config file
   - use withErrorHoc in VKPanel
   - eruda in dev
+  - urls store request methods
 
 ### v1.0.5
 

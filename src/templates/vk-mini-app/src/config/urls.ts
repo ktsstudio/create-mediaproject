@@ -1,7 +1,9 @@
+import { UrlConfigType } from 'types/urls';
+
 const getApiUrl = () => process.env.API_URL || '/' + '';
 
-export default {
-  authUser: `${getApiUrl()}user/auth`, // авторизация GET
-  getInfo: `${getApiUrl()}user/get`, // вся инфомация по пользователю как в авторизации GET
-  flags: `${getApiUrl()}user/flag`, // флаги POST
+export const urls: Record<string, UrlConfigType> = {
+  authUser: { url: `${getApiUrl()}user/auth`, method: 'GET' }, // авторизация
+  getInfo: { url: `${getApiUrl()}user/get`, method: 'GET' }, // вся инфомация по пользователю как в авторизации
+  flags: { url: `${getApiUrl()}user/flag`, method: 'POST' }, // флаги
 };

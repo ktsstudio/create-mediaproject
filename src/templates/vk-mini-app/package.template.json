@@ -9,7 +9,7 @@
     "dev": "NODE_ENV=development API_URL=/api/ webpack-dev-server --mode development",
     "build": "NODE_ENV=production webpack --mode production && yarn run rm-source-maps",
     "build-zip": "NODE_ENV=production IS_ZIP=true webpack --mode production && yarn run rm-source-maps",
-    "ts-check": "tsc --skipLibCheck --noEmit --project tsconfig.json",
+    "ts-check": "tsc --project tsconfig.json",
     "lint-fix": "eslint src --fix",
     "codestyle-fix": "prettier --write **/*.{js,ts,tsx,json,scss}",
     "deploy-vk": "CI_URLS=true vk-miniapps-deploy",
