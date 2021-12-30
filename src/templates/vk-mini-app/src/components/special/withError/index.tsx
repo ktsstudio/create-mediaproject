@@ -2,8 +2,9 @@ import * as React from 'react';
 
 import ErrorBoundary from './ErrorBoundary';
 
-export const withErrorHoc =
-  (PageComponent: React.FC<any>) => (props: React.ComponentProps<any>) => {
+export const withError =
+  (PageComponent: React.FC<React.ComponentProps<any>>) =>
+  (props: React.ComponentProps<any>) => {
     return (
       <ErrorBoundary>
         <PageComponent {...props} />
@@ -11,4 +12,4 @@ export const withErrorHoc =
     );
   };
 
-export default withErrorHoc;
+export default withError;

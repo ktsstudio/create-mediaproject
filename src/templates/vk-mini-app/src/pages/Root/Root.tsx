@@ -6,6 +6,8 @@ import VKPanel from 'components/special/VKPanel';
 import { routes } from 'config/routes';
 import Splash from 'pages/Splash';
 import { useVKLocation, useVKViews } from 'utils/router';
+import setViewSettings from 'utils/setViewSettings';
+import useEventSubscribe from 'utils/useEventSubscribe'; // todo: импортировать из mediaproject-vk
 
 import '../../styles/styles.scss';
 
@@ -13,6 +15,8 @@ const Root: React.FC = () => {
   const views = useVKViews();
   const [appReady, setAppReady] = React.useState(false);
   const { view: activeView, panel: activePanel } = useVKLocation();
+
+  useEventSubscribe('VKWebAppViewRestore', setViewSettings);
 
   const handleAppReady = React.useCallback(() => {
     setAppReady(true);

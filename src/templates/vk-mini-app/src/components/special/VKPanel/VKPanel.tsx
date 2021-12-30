@@ -4,7 +4,7 @@ import * as React from 'react';
 
 import Header from 'components/Header';
 import Container from 'components/special/Container';
-import withErrorHoc from 'components/special/withErrorHoc';
+import withError from 'components/special/withError';
 
 type VKPanelProps = {
   id: string;
@@ -27,4 +27,4 @@ const VKPanel: React.FC<VKPanelProps> = ({
   );
 };
 
-export default withErrorHoc(observer(VKPanel));
+export default withError(observer(VKPanel));

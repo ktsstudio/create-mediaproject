@@ -1,9 +1,10 @@
 ### v1.0.6
 - vk-mini-app template
   - vk-tunnel-config file
-  - use withErrorHoc in VKPanel
+  - use withError hoc in VKPanel
   - eruda in dev
   - urls store request methods
+  - swipe settings being set every time after restore
 
 ### v1.0.5
 
