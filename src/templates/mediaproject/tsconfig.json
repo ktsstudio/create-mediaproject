@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "paths": {
+      "components": ["components/*"],
+      "config": ["config/*"],
+      "img": ["img/*"],
+      "pages": ["pages/*"],
+      "store": ["store/*"],
+      "styles": ["styles/*"],
+      "utils": ["utils/*"]
+    },
+    "typeRoots": ["./node_modules/@types", "types"],
+    "strictPropertyInitialization": false,
+    "allowJs": true,
+    "noEmit": true,
+    "outDir": "./public/",
+    "sourceMap": true,
+    "noImplicitAny": true,
+    "experimentalDecorators": true,
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "strict": true,
+    "module": "commonjs",
+    "target": "es6",
+    "jsx": "react"
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"]
+}

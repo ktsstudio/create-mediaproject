@@ -30,7 +30,9 @@ export const saveFile = (
   const writeData = isTemplate ? renderTemplate() : readFileBuffer();
   const writePath = path.join(projectFilePath, writeFileName);
 
-  fs.writeFileSync(writePath, writeData);
+  const stats = fs.statSync(templateFilePath);
+
+  fs.writeFileSync(writePath, writeData, { mode: stats.mode });
 };
 
 export const createDirectoryContents = (

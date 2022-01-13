@@ -1,0 +1,12 @@
+@import '~@ktsstudio/mediaproject-style/dist/mixins';
+@import '~styles/colors';
+
+.error {
+  width: 60%;
+  position: absolute;
+  @include centerPos();
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: $black;
+}

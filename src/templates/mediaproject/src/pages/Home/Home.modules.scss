@@ -1,0 +1,21 @@
+@import '~styles/colors';
+
+.home {
+  margin: 2.4rem;
+
+  &__title {
+    font-size: 2.8rem;
+    margin-bottom: 1.6rem;
+  }
+
+  &__link {
+    font-size: 1.4rem;
+    color: $blue;
+    transition: color 0.2s ease;
+    text-decoration: underline;
+
+    &:hover {
+      color: $darkBlue;
+    }
+  }
+}
