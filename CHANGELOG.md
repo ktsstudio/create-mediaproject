@@ -1,9 +1,11 @@
 ### v1.1.0
+
 - добавлен шаблон mediaproject
 - create-mediaproject
   - файлы копируются вместе с правами доступа (для активации хуков husky)
 
 ### v1.0.6
+
 - vk-mini-app template
   - vk-tunnel-config file
   - use withError hoc in VKPanel
