@@ -1,4 +1,5 @@
 ### v1.0.6
+
 - vk-mini-app template
   - vk-tunnel-config file
   - use withError hoc in VKPanel

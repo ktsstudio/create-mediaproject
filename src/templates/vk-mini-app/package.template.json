@@ -26,9 +26,9 @@
     }
   },
   "dependencies": {
-    "@ktsstudio/mediaproject-style": "^1.0.0",
-    "@ktsstudio/mediaproject-utils": "^3.0.0",
-    "@ktsstudio/mediaproject-vk": "^1.1.0",
+    "@ktsstudio/mediaproject-style": "^2.0.0",
+    "@ktsstudio/mediaproject-utils": "^4.0.0",
+    "@ktsstudio/mediaproject-vk": "^1.2.1",
     "@vkontakte/icons": "^1.110.0",
     "@vkontakte/vk-bridge": "^2.4.2",
     "@vkontakte/vkjs": "^0.22.1",

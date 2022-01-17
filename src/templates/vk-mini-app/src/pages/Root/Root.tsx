@@ -1,3 +1,4 @@
+import { useEventSubscribe } from '@ktsstudio/mediaproject-vk';
 import { View, Root as VKRoot } from '@vkontakte/vkui';
 import { observer } from 'mobx-react';
 import * as React from 'react';
@@ -7,7 +8,6 @@ import { routes } from 'config/routes';
 import Splash from 'pages/Splash';
 import { useVKLocation, useVKViews } from 'utils/router';
 import setViewSettings from 'utils/setViewSettings';
-import useEventSubscribe from 'utils/useEventSubscribe'; // todo: импортировать из mediaproject-vk
 
 import '../../styles/styles.scss';
 

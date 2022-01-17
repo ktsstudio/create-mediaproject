@@ -1,4 +1,4 @@
-import { UrlConfigType } from 'types/urls';
+import { UrlConfigType } from '@ktsstudio/mediaproject-utils';
 
 const getApiUrl = () => process.env.API_URL || '/' + '';
 
