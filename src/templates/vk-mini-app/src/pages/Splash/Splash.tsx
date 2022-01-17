@@ -1,9 +1,10 @@
 import { loadImages } from '@ktsstudio/mediaproject-utils';
+import { observer } from 'mobx-react';
+import * as React from 'react';
+
 import Container from 'components/special/Container';
 import config from 'config/routes';
 import { allStatics } from 'img/config';
-import { observer } from 'mobx-react';
-import * as React from 'react';
 import { useVKHistory } from 'utils/router';
 
 interface Props {
