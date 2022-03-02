@@ -1,3 +1,8 @@
+### v1.0.7
+
+- vk-mini-app template
+  - added .npmrc config for private registry
+
 ### v1.0.6
 
 - vk-mini-app template
