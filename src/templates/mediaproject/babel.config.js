@@ -21,15 +21,16 @@ module.exports = api => {
       [
         '@dr.pogodin/react-css-modules',
         {
-          'filetypes': {
+          filetypes: {
             '.scss': {
-              'syntax': 'postcss-scss',
-              'plugins': ['postcss-nested'],
+              syntax: 'postcss-scss',
+              plugins: ['postcss-nested'],
             },
           },
-          'generateScopedName': isProd ? '[hash:base64]' : '[path][name]__[local]',
-          'webpackHotModuleReloading': true,
-          'autoResolveMultipleImports': true,
+          generateScopedName: isProd ? '[hash:base64]' : '[path][name]__[local]',
+          webpackHotModuleReloading: true,
+          autoResolveMultipleImports: true,
+          handleMissingStyleName: 'warn',
         },
       ],
     ].filter(Boolean),

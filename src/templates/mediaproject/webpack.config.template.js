@@ -43,8 +43,8 @@ const plugins = [
   new CopyPlugin({
     patterns: [
       {
-        from: path.join(srcPath, 'static', 'img'),
-        to: path.join(buildPath, 'static', 'img'),
+        from: path.join(srcPath, 'static'),
+        to: path.join(buildPath, 'static'),
       },
     ],
   }),
@@ -151,7 +151,7 @@ module.exports = {
         ],
       },
       {
-        test: /\.(png|jpg|jpeg|svg|gif)$/,
+        test: /\.(png|jpg|jpeg|svg)$/,
         exclude: /\.(component|c).svg$/,
         type: 'asset',
         generator: {
@@ -159,7 +159,7 @@ module.exports = {
         },
       },
       {
-        test: /\.(eot|woff2|woff|ttf?)$/,
+        test: /\.(woff2|woff?)$/,
         type: 'asset',
         generator: {
           filename: 'static/fonts/[name].[contenthash][ext]',
@@ -186,11 +186,11 @@ module.exports = {
     port: 8080,
     historyApiFallback: true,
     hot: true,
-    https: true,
+    server: 'https',
     proxy: {
       '/api': {
         changeOrigin: true,
-        target: 'https://<%= projectName %>.kube1.ktsdev2.ru',
+        target: 'https://<%= projectName %>.ktsdev2.ru',
         secure: true,
       },
     },

@@ -1,3 +1,4 @@
+@import '~@ktsstudio/mediaproject-style/dist/mixins';
 @import '~styles/colors';
 
 .start {
@@ -11,11 +12,11 @@
   &__link {
     font-size: 1.4rem;
     color: $blue;
-    transition: color 0.2s ease;
+    @include animate(color);
     text-decoration: underline;
     cursor: pointer;
 
-    &:hover {
+    @include hover {
       color: $darkBlue;
     }
   }
