@@ -1,6 +1,7 @@
-import config from 'config/routes';
 import * as React from 'react';
 import { useLocation } from 'react-router';
+
+import config, { routes } from 'config/routes';
 
 import { VKLocationStateType, VKLocationType } from './types';
 
@@ -14,8 +15,8 @@ export function useVKLocation<
   >();
   const [, , locationPanel] = pathname.split('/');
 
-  const location = React.useMemo(() => {
-    const route = config.routes[locationPanel || config.defaultPanel];
+  return React.useMemo(() => {
+    const route = routes[locationPanel || config.defaultPanel];
 
     return {
       view: route.view,
@@ -26,6 +27,4 @@ export function useVKLocation<
       state,
     };
   }, [locationPanel, pathname, state]);
-
-  return location;
 }
