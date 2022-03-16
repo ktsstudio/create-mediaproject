@@ -1,3 +1,5 @@
+import path from 'path';
+
 export const ENCODING = 'utf-8';
 export const INITIAL_BRANCH = 'main';
 
@@ -11,9 +13,10 @@ export const PATHS = {
   templates: 'templates',
   devModeDir: 'dev',
   src: 'src',
+  modules: 'node_modules',
 };
 
-export const SKIP_FILENAMES: string[] = ['.DS_Store', '.git'];
+export const SKIP_FILENAMES: string[] = ['.DS_Store', '.git', PATHS.modules];
 
 export const MESSAGES = {
   buildDirExists:
@@ -26,6 +29,8 @@ export const MESSAGES = {
   devModeCreateSuccess: (templateName: string, projectName: string): string =>
     `Dev mode was created successfully from template ${templateName} @ ./${projectName}`,
   devModeRunning: 'Dev mode is running',
+  devModeExit: 'Dev mode exit',
+  devModeSymlinkCreated: 'node_modules symlink created',
 };
 
 export const DEV_MESSAGES = {
@@ -45,5 +50,11 @@ export const COMMANDS = {
   },
   git: {
     init: (branch: string): string => `git init --initial-branch ${branch}`,
+  },
+  dev: {
+    rmTemporaryDir: (fullRootDir: string): string =>
+      `rm -rf ${path.join(fullRootDir, PATHS.devModeDir)}`,
+    rmSymlinkModules: (templatePath: string): string =>
+      `rm ${path.join(templatePath, PATHS.modules)}`,
   },
 };

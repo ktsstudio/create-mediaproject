@@ -26,7 +26,3 @@ export const postProcess = (options: OptionsType): void => {
   initGit();
   installDeps();
 };
-
-export const postDevModeProcess = (): void => {
-  exec(COMMANDS.yarn.dev, { async: true });
-};

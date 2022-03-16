@@ -2,11 +2,12 @@ import * as fs from 'fs';
 import * as path from 'path';
 
 import * as ejs from 'ejs';
+import { exec } from 'shelljs';
 
 import { FSType } from './types';
 import { printWarning } from './utils/print';
 import { buildTemplateVariables } from './utils/template';
-import { ENCODING, REGEXP, DEV_MESSAGES } from './config';
+import { ENCODING, REGEXP, DEV_MESSAGES, COMMANDS, PATHS } from './config';
 import { createDirectoryContents } from './createProject';
 
 export const saveFile: FSType = ({
@@ -39,8 +40,10 @@ export const saveFile: FSType = ({
 export const removeFile: FSType = ({ projectBuildPath, entryName }) => {
   const removeFileName = entryName.replace(REGEXP.template, '');
   const fullFilePath = path.join(projectBuildPath, removeFileName);
-  fs.unlinkSync(fullFilePath);
-  printWarning(DEV_MESSAGES.watchRemove(removeFileName));
+  if (fs.existsSync(fullFilePath)) {
+    fs.unlinkSync(fullFilePath);
+    printWarning(DEV_MESSAGES.watchRemove(removeFileName));
+  }
 };
 
 export const saveDirectory: FSType = ({
@@ -60,3 +63,24 @@ export const removeDirectory = (dirPath: string): void => {
     fs.rmSync(dirPath, { recursive: true });
   }
 };
+
+export const symlinkDirectory = (
+  fromPath: string,
+  toPath: string,
+  callback: fs.NoParamCallback
+): void => {
+  fs.symlink(fromPath, toPath, callback);
+};
+
+export const removeTemporaryDevDir = (
+  fullRootDir: string,
+  templatePath: string
+): void => {
+  exec(COMMANDS.dev.rmSymlinkModules(templatePath), { async: true });
+  exec(COMMANDS.dev.rmTemporaryDir(fullRootDir), { async: true });
+};
+
+export const buildFullTemplatePath = (templateName: string): string =>
+  path.join(__dirname, PATHS.templates, templateName);
+
+export const buildParentPath = (): string => path.join(__dirname, '..');

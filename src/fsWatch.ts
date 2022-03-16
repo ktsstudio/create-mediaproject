@@ -1,4 +1,5 @@
 import * as path from 'path';
+import * as fs from 'fs';
 
 import { watch } from 'chokidar';
 
@@ -32,8 +33,12 @@ const buildWatchFSProps = (
   };
 };
 
+const watchOptionsConfig = {
+  ignored: ['**/node_modules'],
+};
+
 export const watchAddFile: FSWatchType = ({ options, fullPath }) => {
-  return watch(fullPath).on('add', (entryPath, stats) => {
+  return watch(fullPath, watchOptionsConfig).on('add', (entryPath, stats) => {
     if (!stats) {
       const saveFileProps = buildWatchFSProps(options, entryPath);
       saveFile(saveFileProps);
@@ -42,15 +47,34 @@ export const watchAddFile: FSWatchType = ({ options, fullPath }) => {
 };
 
 export const watchChangeFile: FSWatchType = ({ options, fullPath }) => {
-  return watch(fullPath).on('change', (entryPath) => {
+  return watch(fullPath, watchOptionsConfig).on('change', (entryPath) => {
     const saveFileProps = buildWatchFSProps(options, entryPath);
     saveFile(saveFileProps);
   });
 };
 
 export const watchUnlinkFile: FSWatchType = ({ options, fullPath }) => {
-  return watch(fullPath).on('unlink', (entryPath) => {
+  return watch(fullPath, watchOptionsConfig).on('unlink', (entryPath) => {
     const removeFileProps = buildWatchFSProps(options, entryPath);
     removeFile(removeFileProps);
   });
+};
+
+export const watchAddDir: FSWatchType = ({ options, fullPath }) => {
+  return watch(fullPath, watchOptionsConfig).on(
+    'addDir',
+    (entryPath, stats) => {
+      if (stats) {
+        return;
+      }
+      const { projectBuildPath, entryName } = buildWatchFSProps(
+        options,
+        entryPath
+      );
+      const dirPath = path.join(projectBuildPath, entryName);
+      if (!fs.existsSync(dirPath)) {
+        fs.mkdirSync(dirPath);
+      }
+    }
+  );
 };
