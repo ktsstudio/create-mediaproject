@@ -1,9 +1,8 @@
-import { BaseUserStore } from '@ktsstudio/mediaproject-stores';
+import { BaseRootStore, BaseUserStore } from '@ktsstudio/mediaproject-stores';
 
-import { RootStore } from './RootStore';
-
-export class UserStore extends BaseUserStore {
-  constructor(rootStore: RootStore) {
+export class UserStore extends BaseUserStore<BaseRootStore> {
+  constructor(rootStore: BaseRootStore) {
     super(rootStore);
+    // todo: makeObservable
   }
 }

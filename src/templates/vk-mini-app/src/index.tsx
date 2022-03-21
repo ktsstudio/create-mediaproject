@@ -16,7 +16,7 @@ import App from './App';
 const startApp = () => {
   initializeVkApp();
 
-  markup(false).init();
+  markup(false, { width: 375, height: 812 }).init();
 
   setSwipeSettings();
   setViewSettings();

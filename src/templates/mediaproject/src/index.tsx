@@ -15,13 +15,6 @@ const startApp = () => {
 
   markup().init();
 
-  if (window.is_production) {
-    Sentry.init({
-      dsn: process.env.SENTRY_DSN,
-      normalizeDepth: 6,
-    });
-  }
-
   fixActive();
 
   // todo: закомментировать перед запуском в прод
