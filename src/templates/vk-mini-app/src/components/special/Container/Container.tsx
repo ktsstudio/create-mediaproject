@@ -12,14 +12,9 @@ const Container: React.FC<Props> = ({
   children,
   fixedHeight = false,
 }: Props) => (
-    <div
-      styleName={cn(
-        'container',
-        fixedHeight && 'container_fixed-height'
-      )}
-    >
-      {children}
-    </div>
-  );
+  <div styleName={cn('container', fixedHeight && 'container_fixed-height')}>
+    {children}
+  </div>
+);
 
 export default React.memo(Container);
