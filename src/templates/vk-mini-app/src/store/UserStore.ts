@@ -1,3 +1,9 @@
 import { BaseUserStore } from '@ktsstudio/mediaproject-stores';
 
-export class UserStore extends BaseUserStore {}
+import { RootStore } from './RootStore';
+
+export class UserStore extends BaseUserStore {
+  constructor(rootStore: RootStore) {
+    super(rootStore);
+  }
+}
