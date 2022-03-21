@@ -1,7 +1,7 @@
 import cn from 'classnames';
 import * as React from 'react';
 
-import styles from './Container.modules.scss';
+import './Container.modules.scss';
 
 interface Props {
   children: React.ReactNode;
@@ -11,17 +11,15 @@ interface Props {
 const Container: React.FC<Props> = ({
   children,
   fixedHeight = false,
-}: Props) => {
-  return (
+}: Props) => (
     <div
-      className={cn(
-        styles.container,
-        fixedHeight && styles['container_fixed-height']
+      styleName={cn(
+        'container',
+        fixedHeight && 'container_fixed-height'
       )}
     >
       {children}
     </div>
   );
-};
 
 export default React.memo(Container);

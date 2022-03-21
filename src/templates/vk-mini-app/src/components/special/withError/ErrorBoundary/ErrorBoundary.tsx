@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import styles from './ErrorBoundary.modules.scss';
+import './ErrorBoundary.modules.scss';
 
 interface Props {
   children: React.ReactNode;
@@ -20,7 +20,7 @@ class ErrorBoundary extends React.Component<Props, State> {
   render() {
     if (this.state.hasError) {
       return (
-        <div className={styles.error}>
+        <div styleName="error">
           Произошла ошибка! Перезагрузите приложение или попробуйте позже
         </div>
       );

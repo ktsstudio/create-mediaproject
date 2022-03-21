@@ -111,9 +111,16 @@ const rules = () => [
         options: {
           memo: true,
           svgoConfig: {
-            plugins: {
-              removeViewBox: false,
-            },
+            plugins: [
+              {
+                name: 'preset-default',
+                params: {
+                  overrides: {
+                    removeViewBox: false,
+                  },
+                },
+              },
+            ],
           },
         },
       },
