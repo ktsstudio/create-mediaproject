@@ -3,8 +3,8 @@ import * as React from 'react';
 import { useRoutes } from 'react-router';
 
 import { RouteEnum } from 'config/routes';
-import Home from 'pages/Home/Home';
-import Start from 'pages/Start/Start';
+import Home from 'pages/Home';
+import Start from 'pages/Start';
 
 const Root: React.FC = () => {
   return useRoutes([

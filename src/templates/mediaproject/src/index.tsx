@@ -13,7 +13,7 @@ import './styles/styles.scss';
 const startApp = () => {
   initializeAppParams();
 
-  markup(true).init();
+  markup().init();
 
   if (window.is_production) {
     Sentry.init({

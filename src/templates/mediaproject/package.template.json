@@ -19,7 +19,6 @@
     "*.scss": "prettier --write"
   },
   "devDependencies": {
-    "@babel/cli": "^7.16.0",
     "@babel/core": "^7.16.5",
     "@babel/plugin-proposal-export-default-from": "^7.16.7",
     "@babel/preset-env": "^7.16.5",
@@ -67,11 +66,12 @@
     "webpack-dev-server": "^4.7.2"
   },
   "dependencies": {
-    "@ktsstudio/mediaproject-style": "^1.0.0",
-    "@ktsstudio/mediaproject-utils": "^3.0.0",
+    "@ktsstudio/mediaproject-stores": "^1.1.0",
+    "@ktsstudio/mediaproject-style": "^2.0.0",
+    "@ktsstudio/mediaproject-utils": "^4.0.0",
     "@sentry/react": "^6.16.1",
     "axios": "^0.24.0",
-    "babel-polyfill": "^6.26.0",
+    "classnames": "^2.3.1",
     "core-js": "^3.20.2",
     "eruda": "^2.4.1",
     "mobx": "^6.3.12",
