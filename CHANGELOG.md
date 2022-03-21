@@ -2,7 +2,7 @@
 
 - vk-mini-app template
   - added @ktsstudio/mediaproject-stores
-  
+
 ### v1.0.7
 
 - vk-mini-app template
