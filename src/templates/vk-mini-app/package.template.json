@@ -30,7 +30,7 @@
   },
   "dependencies": {
     "@ktsstudio/mediaproject-stores": "^1.1.1",
-    "@ktsstudio/mediaproject-style": "^2.0.0",
+    "@ktsstudio/mediaproject-style": "^2.0.1",
     "@ktsstudio/mediaproject-utils": "^4.0.0",
     "@ktsstudio/mediaproject-vk": "^1.2.1",
     "@sentry/react": "^6.17.9",

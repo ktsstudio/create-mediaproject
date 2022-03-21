@@ -69,7 +69,7 @@
   },
   "dependencies": {
     "@ktsstudio/mediaproject-stores": "^1.1.1",
-    "@ktsstudio/mediaproject-style": "^2.0.0",
+    "@ktsstudio/mediaproject-style": "^2.0.1",
     "@ktsstudio/mediaproject-utils": "^4.0.0",
     "@sentry/react": "^6.17.9",
     "axios": "^0.24.0",
