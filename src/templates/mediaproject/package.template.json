@@ -5,9 +5,9 @@
   "author": "KTS Studio",
   "license": "MIT",
   "scripts": {
+    "rm-source-maps": "find ./public -name *.js.map -type f -delete",
     "dev": "NODE_ENV=development API_URL=/api/ webpack serve --mode development",
-    "rm-source-maps": "rimraf ./public/**/*.js.map",
-    "build": "rimraf ./public && NODE_ENV=production webpack --mode production && yarn rm-source-maps",
+    "build": "yarn rm-public & NODE_ENV=production webpack --mode production && yarn run rm-source-maps",
     "ts-check": "tsc --project tsconfig.json",
     "lint-fix": "eslint --fix src",
     "codestyle-fix": "prettier --write **/*.{js,ts,tsx,json,scss}",

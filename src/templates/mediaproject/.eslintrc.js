@@ -21,7 +21,7 @@ module.exports = {
     Atomics: 'readonly',
     SharedArrayBuffer: 'readonly',
   },
-  ignorePatterns: ['*.config.js', '.eslintrc.js'],
+  ignorePatterns: ['*.config.js'],
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
@@ -86,7 +86,7 @@ module.exports = {
     },
     'import/external-module-folders': ['node_modules', 'node_modules/@types'],
     react: {
-      version: 'detected',
+      version: 'detect',
     },
   },
 };

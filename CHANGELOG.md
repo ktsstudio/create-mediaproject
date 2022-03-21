@@ -1,8 +1,19 @@
-### v1.1.0
+## v1.2.0
 
-- добавлен шаблон mediaproject
-- create-mediaproject
+- шаблон mediaproject:
+  - добавлен новый шаблон
+- create-mediaproject:
   - файлы копируются вместе с правами доступа (для активации хуков husky)
+
+## v1.1.0
+
+- шаблон vk-mini-app:
+  - подключена библиотека @ktsstudio/mediaproject-stores
+
+### v1.0.7
+
+- шаблон vk-mini-app:
+  - добавлен файл .npmrc для получения пакетов из приватного реджистри kts
 
 ### v1.0.6
 

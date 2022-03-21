@@ -86,7 +86,7 @@ module.exports = {
     },
     'import/external-module-folders': ['node_modules', 'node_modules/@types'],
     react: {
-      version: 'detected',
+      version: 'detect',
     },
   },
 };
