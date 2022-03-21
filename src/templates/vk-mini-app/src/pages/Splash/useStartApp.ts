@@ -19,9 +19,9 @@ const useStartApp = (onReady: VoidFunction): number => {
       auth(),
     ]).then(([, { response }]) => {
       // TODO: закоментить, чтоб приложение работало без авторизации
-      if (!response) {
-        return;
-      }
+      // if (!response) {
+      //   return;
+      // }
 
       replace({ panel: config.defaultPanel, canSwipeBack: false });
       onReady();
