@@ -39,8 +39,9 @@ create-mediaproject
 4. В результате будет создан проект с инициализированным git-репозиторием и установленными зависимостями.
 
 ### Доступные шаблоны проектов:
-* mediaproject
-* [vk mini app](https://vk.com/dev/vk_apps_docs)
+
+- mediaproject
+- [vk mini app](https://vk.com/dev/vk_apps_docs)
 
 ### Обратная связь
 

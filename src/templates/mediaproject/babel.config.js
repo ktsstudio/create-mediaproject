@@ -1,4 +1,4 @@
-module.exports = api => {
+module.exports = (api) => {
   const isProd = process.env.NODE_ENV === 'production';
 
   api.cache(() => process.env.NODE_ENV);
@@ -27,7 +27,9 @@ module.exports = api => {
               plugins: ['postcss-nested'],
             },
           },
-          generateScopedName: isProd ? '[hash:base64]' : '[path][name]__[local]',
+          generateScopedName: isProd
+            ? '[hash:base64]'
+            : '[path][name]__[local]',
           webpackHotModuleReloading: true,
           autoResolveMultipleImports: true,
           handleMissingStyleName: 'warn',
