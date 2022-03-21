@@ -72,7 +72,7 @@ module.exports = {
   },
   settings: {
     react: {
-      version: 'latest',
+      version: 'detect',
     },
     'import/parsers': {
       '@typescript-eslint/parser': ['.ts', '.tsx'],
