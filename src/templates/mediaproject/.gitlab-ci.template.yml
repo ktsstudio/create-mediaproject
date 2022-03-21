@@ -1,10 +1,9 @@
 include:
   project: mnt/ci
-  file: front/ci-special.yaml
+  file: front/ci.yaml
   ref: ${MNT_CI_REF}
 
 variables:
-  PROD_DOMAIN: <%= projectName %>.ru-prod2.kts.studio
   DEV_BASE_DOMAIN: <%= projectName %>.ktsdev2.ru
   DEV_API_DOMAIN: <%= projectName %>.ktsdev2.ru
-  VK_PROD_APP_ID: 1234567
+  PROD_DOMAIN: <%= projectName %>.ru-prod2.kts.studio

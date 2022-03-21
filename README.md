@@ -40,6 +40,7 @@ create-mediaproject
 
 ### Доступные шаблоны проектов:
 
+- mediaproject
 - [vk mini app](https://vk.com/dev/vk_apps_docs)
 
 ### Обратная связь

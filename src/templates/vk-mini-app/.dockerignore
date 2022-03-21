@@ -1,5 +1,0 @@
-.git*
-kube
-Dockerfile
-.dockerignore
-node_modules/

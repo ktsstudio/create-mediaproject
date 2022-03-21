@@ -1,12 +1,22 @@
-### v1.1.0
+## v1.2.0
 
-- vk-mini-app template
-  - added @ktsstudio/mediaproject-stores
+- шаблон mediaproject:
+  - добавлен новый шаблон
+- шаблон vk-mini-app:
+  - подключены css-модули с синтаксисом styleName
+  - обновлены зависимости
+- create-mediaproject:
+  - файлы копируются вместе с правами доступа (для активации хуков husky)
+
+## v1.1.0
+
+- шаблон vk-mini-app:
+  - подключена библиотека @ktsstudio/mediaproject-stores
 
 ### v1.0.7
 
-- vk-mini-app template
-  - added .npmrc config for private registry
+- шаблон vk-mini-app:
+  - добавлен файл .npmrc для получения пакетов из приватного реджистри kts
 
 ### v1.0.6
 

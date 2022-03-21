@@ -1,6 +1,6 @@
 {
   "name": "@ktsstudio/create-mediaproject",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "author": "KTS Studio",
   "license": "MIT",
   "description": "Package-template for kts special project frontend",

@@ -1,3 +1,4 @@
+import * as Sentry from '@sentry/react';
 import * as React from 'react';
 
 import './ErrorBoundary.modules.scss';
@@ -13,15 +14,19 @@ interface State {
 class ErrorBoundary extends React.Component<Props, State> {
   state = { hasError: false };
 
-  componentDidCatch() {
+  componentDidCatch(error: Error) {
     this.setState({ hasError: true });
+
+    if (window.is_production) {
+      Sentry.captureException(error);
+    }
   }
 
   render() {
     if (this.state.hasError) {
       return (
         <div styleName="error">
-          Произошла ошибка! Перезагрузите приложение или попробуйте позже
+          Произошла ошибка! Попробуйте обновить страницу
         </div>
       );
     }
