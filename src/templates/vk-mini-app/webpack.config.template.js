@@ -18,6 +18,8 @@ const buildPath = path.resolve(__dirname, 'public');
 const isProd = process.env.NODE_ENV === 'production';
 const isZip = process.env.IS_ZIP === 'true';
 
+const urlS3 = process.env.S3_URL;
+
 const REGEXP = {
   nodeModules: /node_modules/,
   scripts: /\.(ts|js)x?$/,
@@ -26,6 +28,7 @@ const REGEXP = {
   images: /\.(png|jpg|gif|svg)$/,
   svgComponents: /\.(component|c)\.svg$/,
   fonts: /\.(eot|woff2|woff?)$/,
+  assets: /\.(asset)\.(png|jpg|gif|svg|mp3|wav|ogg)$/,
 };
 
 const getCSSLoader = (withModules = false) => [
@@ -97,10 +100,10 @@ const rules = () => [
   },
   {
     test: REGEXP.images,
-    exclude: REGEXP.svgComponents,
+    exclude: [REGEXP.svgComponents, REGEXP.assets],
     type: 'asset',
     generator: {
-      filename: buildFilename('img', '[name].[hash][ext]'),
+      filename: buildFilename('img', '[name].[contenthash:8][ext]'),
     },
   },
   {
@@ -128,9 +131,17 @@ const rules = () => [
   },
   {
     test: REGEXP.fonts,
-    type: 'asset',
+    type: 'asset/resource',
     generator: {
-      filename: buildFilename('fonts', '[name].[hash][ext]'),
+      filename: buildFilename('fonts', '[name].[hash:8][ext]'),
+    },
+  },
+  {
+    test: REGEXP.assets,
+    type: 'asset/resource',
+    generator: {
+      filename: 'assets/[name].[contenthash:8][ext]',
+      publicPath: isProd ? urlS3 : '/',
     },
   },
   {
@@ -149,6 +160,7 @@ const plugins = () => [
     'process.env': {
       NODE_ENV: JSON.stringify(process.env.NODE_ENV),
       API_URL: JSON.stringify(process.env.API_URL),
+      S3_URL: JSON.stringify(process.env.S3_URL),
     },
   }),
   new HtmlWebpackPlugin({

@@ -71,9 +71,6 @@ module.exports = {
     '@typescript-eslint/ban-ts-comment': 'warn',
   },
   settings: {
-    react: {
-      version: 'latest',
-    },
     'import/parsers': {
       '@typescript-eslint/parser': ['.ts', '.tsx'],
     },
