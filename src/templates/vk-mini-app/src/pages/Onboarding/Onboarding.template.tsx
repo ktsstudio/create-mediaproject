@@ -5,7 +5,7 @@ import * as React from 'react';
 import { ModalEnum, PanelEnum } from 'config/routes';
 import { useVKHistory, useVKLocation } from 'utils/router';
 
-import styles from './Onboarding.modules.scss';
+import './Onboarding.modules.scss';
 import ReactIcon from './react-icon.component.svg';
 
 const Onboarding: React.FC = () => {
@@ -14,16 +14,16 @@ const Onboarding: React.FC = () => {
 
   return (
     <>
-      <div className={styles.container}>
+      <div styleName="container">
         <h1><%= projectName %></h1>
         <div>
-          <div className={styles.vk_icon} />
-          <div className={styles.react_icon}>
+          <div styleName="vk_icon" />
+          <div styleName="react_icon">
             <ReactIcon />
           </div>
-          <div className={styles.webpack_icon} />
+          <div styleName="webpack_icon" />
         </div>
-        <div className={styles.buttons}>
+        <div styleName="buttons">
           <Button onClick={() => push({ panel: PanelEnum.main })}>
             Go to Main page
           </Button>
@@ -33,8 +33,8 @@ const Onboarding: React.FC = () => {
         </div>
       </div>
       {modal === ModalEnum.greeting && (
-        <div className={styles.modal}>
-          <div className={styles.modal_title}>hi there</div>
+        <div styleName="modal">
+          <div styleName="modal_title">hi there</div>
           <Button onClick={goBack}>Close modal</Button>
         </div>
       )}

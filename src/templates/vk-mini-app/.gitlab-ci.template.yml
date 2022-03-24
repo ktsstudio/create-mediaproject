@@ -5,6 +5,6 @@ include:
 
 variables:
   PROD_DOMAIN: <%= projectName %>.ru-prod2.kts.studio
-  DEV_BASE_DOMAIN: <%= projectName %>.kube1.ktsdev2.ru
-  DEV_API_DOMAIN: <%= projectName %>.kube1.ktsdev2.ru
+  DEV_BASE_DOMAIN: <%= projectName %>.ktsdev2.ru
+  DEV_API_DOMAIN: <%= projectName %>.ktsdev2.ru
   VK_PROD_APP_ID: 1234567

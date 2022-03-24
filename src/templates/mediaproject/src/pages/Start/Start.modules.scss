@@ -1,0 +1,23 @@
+@import '~@ktsstudio/mediaproject-style/dist/mixins';
+@import '~styles/colors';
+
+.start {
+  margin: 2.4rem;
+
+  &__title {
+    font-size: 2.8rem;
+    margin-bottom: 1.6rem;
+  }
+
+  &__link {
+    font-size: 1.4rem;
+    color: $blue;
+    @include animate(color);
+    text-decoration: underline;
+    cursor: pointer;
+
+    @include hover {
+      color: $darkBlue;
+    }
+  }
+}
