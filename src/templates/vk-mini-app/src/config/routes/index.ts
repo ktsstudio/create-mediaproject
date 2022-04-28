@@ -8,6 +8,7 @@ export enum ViewEnum {
 export enum PanelEnum {
   onboarding = 'onboarding',
   main = 'main',
+  mainSecond = 'mainSecond',
 }
 
 export enum ModalEnum {
@@ -25,6 +26,11 @@ export const routes: VKRoutesRecord = {
     panel: PanelEnum.main,
     view: ViewEnum.main,
     Component: require('pages/Main').default,
+  },
+  [PanelEnum.mainSecond]: {
+    panel: PanelEnum.mainSecond,
+    view: ViewEnum.main,
+    Component: require('pages/MainSecond').default,
   },
 };
 

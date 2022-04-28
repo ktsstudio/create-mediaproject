@@ -18,14 +18,12 @@ export function useVKHistory<
       push: ({
         panel = undefined,
         modal = undefined,
-        canSwipeBack = true,
         state = undefined,
       }: PushOrReplaceVKLocationParams<LocationStateType>) => {
         push(
           buildVKLocation({
             panel: panel || activePanel,
             modal,
-            canSwipeBack,
             state,
           })
         );
@@ -33,14 +31,12 @@ export function useVKHistory<
       replace: ({
         panel = undefined,
         modal = undefined,
-        canSwipeBack = true,
         state = undefined,
       }: PushOrReplaceVKLocationParams<LocationStateType>) => {
         replace(
           buildVKLocation({
             panel: panel || activePanel,
             modal,
-            canSwipeBack,
             state,
           })
         );

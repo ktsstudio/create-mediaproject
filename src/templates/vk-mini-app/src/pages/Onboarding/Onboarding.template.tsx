@@ -2,15 +2,14 @@ import { Button } from '@vkontakte/vkui';
 import { observer } from 'mobx-react';
 import * as React from 'react';
 
-import { ModalEnum, PanelEnum } from 'config/routes';
-import { useVKHistory, useVKLocation } from 'utils/router';
+import { PanelEnum } from 'config/routes';
+import { useVKHistory } from 'utils/router';
 
 import './Onboarding.modules.scss';
 import ReactIcon from './react-icon.component.svg';
 
 const Onboarding: React.FC = () => {
-  const { push, goBack } = useVKHistory();
-  const { modal } = useVKLocation();
+  const { push } = useVKHistory();
 
   return (
     <>
@@ -27,17 +26,8 @@ const Onboarding: React.FC = () => {
           <Button onClick={() => push({ panel: PanelEnum.main })}>
             Go to Main page
           </Button>
-          <Button onClick={() => push({ modal: ModalEnum.greeting })}>
-            Open Greeting modal
-          </Button>
         </div>
       </div>
-      {modal === ModalEnum.greeting && (
-        <div styleName="modal">
-          <div styleName="modal_title">hi there</div>
-          <Button onClick={goBack}>Close modal</Button>
-        </div>
-      )}
     </>
   );
 };

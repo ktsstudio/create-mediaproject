@@ -22,7 +22,6 @@ export function useVKLocation<
       view: route.view,
       panel: route.panel,
       modal: state?.modal,
-      canSwipeBack: state?.canSwipeBack ?? true,
       route,
       state,
     };

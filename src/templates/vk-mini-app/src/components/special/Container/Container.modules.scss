@@ -1,19 +1,18 @@
-@import '~@ktsstudio/mediaproject-style/dist/mixins';
 @import '~styles/colors';
 
 .container {
   width: 100%;
-  min-height: 100vh;
-  position: fixed;
-  top: 0;
-  left: 0;
   height: 100%;
-  overflow-y: auto;
-  overflow-x: hidden;
-  display: flex;
-  flex-direction: column;
+  background: $white;
 
-  @include hideScrollbar;
+  :global(.vkuiPanel::after),
+  :global(.vkuiPanel__in) {
+    background: none; // убрать, если используется vkui и нужно подтягивать фон темы
+  }
+
+  :global(.vkuiPanel__in) {
+    padding: 0; // убираем отступы safe-area
+  }
 
   &_fixed-height {
     overflow: hidden;

@@ -1,11 +1,7 @@
 import 'regenerator-runtime/runtime';
 import { markup } from '@ktsstudio/mediaproject-style';
 import { fixActive } from '@ktsstudio/mediaproject-utils';
-import {
-  initializeVkApp,
-  setSwipeSettings,
-  setViewSettings,
-} from '@ktsstudio/mediaproject-vk';
+import { initializeVkApp, setViewSettings } from '@ktsstudio/mediaproject-vk';
 import * as eruda from 'eruda'; // todo: закомментировать перед запуском в прод
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
@@ -18,7 +14,6 @@ const startApp = () => {
 
   markup(false, { width: 375, height: 812 }).init();
 
-  setSwipeSettings();
   setViewSettings();
 
   fixActive();
