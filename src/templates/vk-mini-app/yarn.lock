@@ -1176,10 +1176,10 @@
   dependencies:
     react "~17.0.0"
 
-"@ktsstudio/mediaproject-style@^2.0.0":
-  version "2.0.0"
-  resolved "https://nexus.team.ktsstudio.ru/repository/kts-npm-proxy/@ktsstudio/mediaproject-style/-/mediaproject-style-2.0.0.tgz#a763c529b1e6b20139206bea5aed8d7e0e0727fe"
-  integrity sha512-YYJnSrJtnwI7ZpamHBTPls2lj10VtdEboReGXRGNNn5PR/JTpIhqWp+X9mhagn29KxWnEtDbj44H1X5K5mqSOA==
+"@ktsstudio/mediaproject-style@^2.0.1":
+  version "2.0.1"
+  resolved "https://nexus.team.ktsstudio.ru/repository/kts-npm-proxy/@ktsstudio/mediaproject-style/-/mediaproject-style-2.0.1.tgz#771f201fa004ae8547a319f7aa4dee85bfd2179c"
+  integrity sha512-dyYzqPJcu9iNLa75ggwDEsKK5cA7av6ufRMtJi8KG7HebY9mXbdmQmYmKJJC0HfLMdqvArMxjZtSC7GgKZ+zww==
 
 "@ktsstudio/mediaproject-utils@^4.0.0":
   version "4.0.0"
@@ -1620,6 +1620,11 @@
   dependencies:
     "@types/mime" "^1"
     "@types/node" "*"
+
+"@types/smoothscroll-polyfill@^0.3.1":
+  version "0.3.1"
+  resolved "https://nexus.team.ktsstudio.ru/repository/kts-npm-proxy/@types/smoothscroll-polyfill/-/smoothscroll-polyfill-0.3.1.tgz#77fb3a6e116bdab4a5959122e3b8e201224dcd49"
+  integrity sha512-+KkHw4y+EyeCtVXET7woHUhIbfWFCflc0E0mZnSV+ZdjPQeHt/9KPEuT7gSW/kFQ8O3EG30PLO++YhChDt8+Ag==
 
 "@types/sockjs@^0.3.33":
   version "0.3.33"
@@ -6735,6 +6740,11 @@ slice-ansi@^5.0.0:
   dependencies:
     ansi-styles "^6.0.0"
     is-fullwidth-code-point "^4.0.0"
+
+smoothscroll-polyfill@^0.4.4:
+  version "0.4.4"
+  resolved "https://nexus.team.ktsstudio.ru/repository/kts-npm-proxy/smoothscroll-polyfill/-/smoothscroll-polyfill-0.4.4.tgz#3a259131dc6930e6ca80003e1cb03b603b69abf8"
+  integrity sha512-TK5ZA9U5RqCwMpfoMq/l1mrH0JAR7y7KRvOBx0n2869aLxch+gT9GhN3yUfjiw+d/DiF1mKo14+hd62JyMmoBg==
 
 snapdragon-node@^2.0.1:
   version "2.1.1"
