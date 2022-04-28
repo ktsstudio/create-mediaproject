@@ -4,7 +4,6 @@ import { VKRouteType } from 'config/routes/types';
 // текущий стейт текущего локейшена
 export type VKLocationStateType = {
   modal?: ModalEnum;
-  canSwipeBack?: boolean;
 };
 
 // параметры, из которых билдится новый локейшн

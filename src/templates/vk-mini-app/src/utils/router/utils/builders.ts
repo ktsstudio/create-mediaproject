@@ -14,17 +14,13 @@ export function buildVKPathname(panel: PanelEnum): string {
 export function buildVKLocation<LocationStateType>({
   panel,
   modal = undefined,
-  canSwipeBack = true,
   state = undefined,
 }: VKLocationParams<LocationStateType>): LocationDescriptor<
   LocationStateType | VKLocationStateType
 > {
   const config = {
     pathname: buildVKPathname(panel),
-    state: {
-      modal,
-      canSwipeBack,
-    },
+    state: { modal },
   };
 
   if (state) {

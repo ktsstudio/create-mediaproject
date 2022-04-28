@@ -23,7 +23,7 @@ const useStartApp = (onReady: VoidFunction): number => {
       //   return;
       // }
 
-      replace({ panel: config.defaultPanel, canSwipeBack: false });
+      replace({ panel: config.defaultPanel });
       onReady();
     });
   }, []);

@@ -18,12 +18,12 @@ const VKPanel: React.FC<VKPanelProps> = ({
   fixedHeight = false,
 }: VKPanelProps) => {
   return (
-    <Panel id={id}>
-      <Container fixedHeight={fixedHeight}>
+    <Container fixedHeight={fixedHeight}>
+      <Panel id={id}>
         <Header />
         {children}
-      </Container>
-    </Panel>
+      </Panel>
+    </Container>
   );
 };
 

@@ -3,6 +3,7 @@
 @import '~styles/colors';
 
 * {
+  // переопределение переменных vkui
   --font-common: 'VK Sans Display', sans-serif;
   --text_primary: #000;
   --accent: #000;
@@ -12,32 +13,27 @@
   box-sizing: border-box;
   user-select: none;
   outline: none;
-  -webkit-font-smoothing: antialiased;
-
-  -webkit-overflow-scrolling: touch;
-
-  -webkit-text-size-adjust: none;
-  text-size-adjust: none;
-
-  -webkit-tap-highlight-color: transparent;
-  tap-highlight-color: transparent;
-  text-decoration: none;
   border: none;
+  text-decoration: none;
+
+  -webkit-overflow-scrolling: touch; // для плавного скролла в старых версиях ios
+  -webkit-font-smoothing: antialiased; // переопределяем вкшное subpixel-antialiased
+  text-size-adjust: none; // отключаем увеличение текста на мобильных устройствах
+
   font-family: 'VK Sans Display', sans-serif;
 }
 
 html,
 body {
-  -webkit-font-smoothing: antialiased;
   margin: 0;
   padding: 0;
+
   width: 100%;
   height: 100%;
-  overflow: hidden;
-  overscroll-behavior: none;
   position: fixed;
   top: 0;
   left: 0;
+  overflow: hidden;
 }
 
 a {
@@ -45,22 +41,19 @@ a {
   text-decoration: none;
 }
 
-#root {
+// элемент, который скроллится
+.vkuiAppRoot {
   width: 100%;
-  overscroll-behavior: none;
-  overflow: auto;
-
-  z-index: 0;
-  height: 100vh;
-  overflow-x: hidden;
-  overflow-y: hidden;
-
-  min-height: 100vh;
-  top: 0;
+  height: 100%;
+  position: fixed;
   left: 0;
+  top: 0;
 
   background: $white;
   color: $black;
 
-  transform: translate3d(0, 0, 0);
+  overflow-x: hidden !important;
+  @include hideScrollbar;
+
+  transform: translate3d(0, 0, 0); // performance hack
 }
