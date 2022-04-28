@@ -1,3 +1,11 @@
+## v1.3.0
+- шаблон mediaproject:
+  - удалены лишние стили из styles/styles.scss
+- шаблон vk-mini-app:
+  - добавлена поддержка свайпбэка
+  - useScroll - хук с утилитами для скролла
+  - удалены лишние стили из styles/styles.scss
+
 ## v1.2.0
 
 - шаблон mediaproject:
